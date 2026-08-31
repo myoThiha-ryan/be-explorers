@@ -1,36 +1,188 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BeExplorers
 
-## Getting Started
+Marketing site for BeExplorers — London walking tours and day trips to Oxford,
+Cambridge, Windsor Castle and Stonehenge, guided in English, Myanmar and German
+by A Kay Mon. Enquiry-led: there is no online booking and no payment in this
+version, by design.
 
-First, run the development server:
+Built with Next.js 16 (App Router), React 19, TypeScript and Tailwind CSS v4.
+
+## Running it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## How the project is laid out
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+src/
+  app/                 routes — one folder per page
+    api/enquiry/       enquiry form endpoint
+    tours/[slug]/      tour detail pages, generated from the tour data
+  components/
+    layout/            Header, Footer, Logo
+    home/              the homepage sections, in page order
+    ui/                reusable pieces (see below)
+  content/             all copy and data — edit here, not in components
+  lib/                 tiny helpers
+public/images/         bundled destination photography
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**All copy lives in `src/content/`.** Tour names, prices, FAQs, contact details
+and social links can all be changed without touching a component:
 
-## Learn More
+| File | What it holds |
+| --- | --- |
+| `site.ts` | Brand, navigation, languages, email, WhatsApp, socials |
+| `tours.ts` | Every tour — the tours page, homepage cards and detail pages all read from it |
+| `home.ts` | Homepage section copy: hero, benefits, destinations, steps, testimonials |
+| `faqs.ts` | FAQ groups, used on the FAQs page and as teasers elsewhere |
+| `images.ts` | Every image on the site, in one registry |
 
-To learn more about Next.js, take a look at the following resources:
+Adding a tour to `tours.ts` gives you a card on `/tours`, a detail page at
+`/tours/<slug>`, and an option in the enquiry form — no other changes needed.
+Set `featured: true` to put it on the homepage.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Pricing model.** The four fully-specified London walking tours share a
+`walkingTour` object at the top of `tours.ts`: 2 hours, £20 per person,
+under-18s free, special rates for families and companies booking privately.
+Change it in one place and all four update. The remaining tours carry no
+published price, so they show "Price on enquiry" — they are marked
+`detailsPending: true` because their itinerary, meeting point and price have not
+been supplied yet.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Reusable components
 
-## Deploy on Vercel
+`Container`, `Button`, `SectionHeading`, `PageHero`, `CTABanner`, `TourCard`,
+`DestinationCard`, `TestimonialCard`, `FaqAccordion`, `LanguageTags`,
+`EnquiryForm`, `Icon`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+A note on `Button`: it sets its own `display`, so to hide one responsively wrap
+it in an element (`<span className="hidden sm:block">`) rather than passing
+`hidden` through `className` — two competing display utilities resolve by
+stylesheet order, not by the order you write them.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Design system
+
+Defined as tokens in `src/app/globals.css`:
+
+- White page ground, deep navy (`navy-800` `#0b2545`) as the brand colour
+- `mist` (`#f4f7fa`) for secondary sections, `ink` (`#22262b`) for body copy
+- Fraunces (display) + Inter (UI/body) + Noto Sans Myanmar for Myanmar script
+- Generous vertical rhythm (`py-20 md:py-28`), 1200px container, mobile-first
+
+Animation is deliberately minimal: one entrance on the hero copy, slow image
+scale on hover, colour transitions. Everything respects
+`prefers-reduced-motion`.
+
+## Enquiry form
+
+`POST /api/enquiry` validates the submission, drops honeypot spam, then
+delivers it based on environment variables — see `.env.example`. With none set
+it logs to the server console and still confirms to the visitor, so the site
+can be deployed before an email provider is chosen.
+
+There is no database and no payment integration, deliberately.
+
+## Languages
+
+The site itself is published in **English only**, and there is no language
+switcher — that is out of scope for the first release. English, German and
+Myanmar still appear throughout as the languages the *tours* are guided in:
+the "Tours in Your Language" section, the tags on each tour card, the footer,
+and the preferred-language field on the enquiry form. All three are defined
+once in `languages` (`src/content/site.ts`).
+
+To translate the site later:
+
+1. `npm install next-intl`
+2. Move the routes under `src/app/[locale]/`
+3. Move the strings out of `src/content/` into per-locale message files
+4. Add a switcher to the header, pointing each locale at its route
+
+Myanmar text is rendered with Noto Sans Myanmar via the `font-my` utility —
+keep using it for any Myanmar string, or it will show as boxes on Windows.
+
+## Client review pack
+
+`review/BeExplorers-design-preview.pdf` is a PDF of Home, Tours, About Us, FAQs
+and Contact at desktop width (1440px), with a cover page listing what is still
+placeholder so a reviewer does not sign off on it.
+
+Sheets are cut on section boundaries, not at fixed heights, so a section is
+never sliced mid-content: one that fits gets a sheet to itself, one up to 1.5×
+too tall is scaled down to fit whole, and anything taller is split on its own
+inner boundaries (a row of tour cards, an FAQ group). Each sheet is captioned
+with the headings that appear on it. To regenerate after content changes:
+
+```bash
+npm run build
+PORT=3100 npm start          # production server, so no dev badge appears
+npm run review:pdf           # in a second terminal
+```
+
+It drives the Chrome already installed on the machine (via the `playwright`
+devDependency — no browser download). The `review/` folder is gitignored.
+
+## Deploying
+
+The site is **noindex by default** — `src/app/robots.ts` serves `Disallow: /`
+and every page carries a `noindex` meta tag, so a preview deployment full of
+placeholder copy cannot end up in Google. At launch, on the real domain, set
+`SITE_INDEXABLE=true` and redeploy (it is read at build time).
+
+To put a preview in front of the client:
+
+```bash
+npx vercel login
+npx vercel            # first run: accept the defaults, Next.js is auto-detected
+npx vercel --prod     # promotes it to the stable project URL you share
+```
+
+No environment variables are required to build. Note that without enquiry
+delivery configured (see `.env.example`), a form submission on the deployed site
+succeeds for the visitor but only lands in the Vercel function logs — set
+`RESEND_API_KEY` or `ENQUIRY_WEBHOOK_URL` before anyone relies on it.
+
+On the free plan the production URL is public to anyone who has the link;
+password protection is a paid feature.
+
+## Before launch
+
+- [ ] Replace the placeholder photography (see `public/images/ATTRIBUTION.md`)
+- [ ] Add a photo of A Kay Mon. The guide sections on the homepage and About
+      page currently render `PortraitPlaceholder` ("Photo coming soon") rather
+      than a stock portrait of someone else — swap it for a `next/image` and
+      keep the same wrapper classes so the layout does not shift
+- [ ] Confirm the enquiry email in `src/content/site.ts`. The client's FAQ
+      document gives `info@beexplorerstravel.com`, but the address in the code is
+      `inquiry@beexplorertravelandtour.com` as separately instructed — these are
+      two different domains, so check which is correct
+- [ ] Confirm `+44 7852 583872` is reachable on WhatsApp — the contact page and
+      form confirmation both offer it as a WhatsApp number
+- [ ] Replace the placeholder social URLs in `src/content/site.ts`
+- [ ] Replace the testimonials in `src/content/home.ts` with real ones
+- [ ] Add the real content for the five tours marked `detailsPending` in
+      `tours.ts` — Canary Wharf & Greenwich, Oxford, Cambridge, Windsor Castle
+      and Stonehenge. They currently show "Price on enquiry" and a short notice
+      instead of an itinerary. Remove the flag once the details are in
+- [ ] Add a meeting point for the Westminster tour — it is the one walking tour
+      without one, so its detail page omits that section
+- [ ] Wire up enquiry delivery (`.env.example`)
+- [ ] Have the Privacy Policy and Terms reviewed — both are placeholder wording
+- [ ] Replace the placeholder favicon in `src/app/icon.tsx` with the real logo
+- [ ] Set `SITE_INDEXABLE=true` on the production environment and redeploy, so
+      the site can be indexed (it is deliberately noindex until then)
+- [ ] Set `site.url` in `src/content/site.ts` to the live domain. It is still
+      `beexplorers.co.uk`, but the enquiry address is on
+      `beexplorertravelandtour.com` — confirm which domain the site will use, as
+      this one drives the canonical and Open Graph URLs
+
+## Not built yet
+
+Blog, tour filtering on `/tours`, and translated content. The tour data model
+and components are ready for all three.
