@@ -16,6 +16,9 @@ and delete this file.
 | `stonehenge.jpg` | simonwakefield | CC BY 2.0 | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Stonehenge_(sun).jpg) |
 | `canary-wharf.jpg` | King of Hearts | CC BY-SA 4.0 | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Canary_Wharf_from_Limehouse_London_June_2016_HDR.jpg) |
 
+`guide-portrait.jpg` is **not** a placeholder — it was supplied by the client
+and needs no attribution.
+
 The London photography is hotlinked from the Unsplash CDN and is defined in
 `src/content/images.ts`. Unsplash's licence does not require attribution, but
 crediting photographers is good manners — and all of it should be swapped for

@@ -154,10 +154,10 @@ password protection is a paid feature.
 ## Before launch
 
 - [ ] Replace the placeholder photography (see `public/images/ATTRIBUTION.md`)
-- [ ] Add a photo of A Kay Mon. The guide sections on the homepage and About
-      page currently render `PortraitPlaceholder` ("Photo coming soon") rather
-      than a stock portrait of someone else — swap it for a `next/image` and
-      keep the same wrapper classes so the layout does not shift
+- [ ] Confirm the guide photo. `public/images/guide-portrait.jpg` was supplied
+      by the client and renders in `GuidePortrait` on the homepage and About
+      page. Its alt text does not name anyone — if the person in it is A Kay
+      Mon, name her in `images.guidePortrait.alt` for accessibility and search
 - [ ] Confirm the enquiry email in `src/content/site.ts`. The client's FAQ
       document gives `info@beexplorerstravel.com`, but the address in the code is
       `inquiry@beexplorertravelandtour.com` as separately instructed — these are

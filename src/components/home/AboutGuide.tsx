@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { PortraitPlaceholder } from "@/components/ui/PortraitPlaceholder";
+import { GuidePortrait } from "@/components/ui/GuidePortrait";
 import { aboutGuide } from "@/content/home";
 
 export function AboutGuide() {
@@ -8,7 +8,7 @@ export function AboutGuide() {
     <section className="py-20 md:py-28">
       <Container>
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
-          <PortraitPlaceholder className="aspect-4/5 w-full sm:aspect-4/3 lg:aspect-4/5" />
+          <GuidePortrait className="aspect-4/5 w-full" />
 
           <div>
             <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-ink-muted">

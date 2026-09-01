@@ -54,9 +54,11 @@ export const images = {
     src: unsplash("1526129318478-62ed807ebdf9"),
     alt: "Union Jack flags above Regent Street with a black cab and red bus below",
   },
-  /* No guide portrait yet — the guide sections use `PortraitPlaceholder`
-     rather than a stock photo of someone who is not the guide. Add the real
-     photo here and swap the placeholder for a `next/image`. */
+  /* Supplied by the client — not placeholder imagery. */
+  guidePortrait: {
+    src: "/images/guide-portrait.jpg",
+    alt: "Your BeExplorers guide in Parliament Square, with Big Ben and the Houses of Parliament behind",
+  },
 
   nottingHill: {
     src: "/images/notting-hill-mews.jpg",

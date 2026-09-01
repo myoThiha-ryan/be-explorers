@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { CTABanner } from "@/components/ui/CTABanner";
 import { Container } from "@/components/ui/Container";
+import { GuidePortrait } from "@/components/ui/GuidePortrait";
 import { Icon } from "@/components/ui/Icon";
 import { PageHero } from "@/components/ui/PageHero";
-import { PortraitPlaceholder } from "@/components/ui/PortraitPlaceholder";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { benefits } from "@/content/home";
 import { site } from "@/content/site";
@@ -36,7 +36,7 @@ export default function AboutPage() {
       <section className="py-20 md:py-28">
         <Container>
           <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-20">
-            <PortraitPlaceholder className="aspect-4/5 w-full" />
+            <GuidePortrait className="aspect-4/5 w-full" priority />
             <div>
               <h2 className="text-[2rem] leading-[1.12] sm:text-[2.5rem]">
                 Meet your guide
