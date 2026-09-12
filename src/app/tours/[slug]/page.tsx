@@ -5,13 +5,13 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { EnquiryForm } from "@/components/ui/EnquiryForm";
 import { FaqAccordion } from "@/components/ui/FaqAccordion";
-import { Icon } from "@/components/ui/Icon";
+import { Icon, type IconName } from "@/components/ui/Icon";
 import { LanguageTags } from "@/components/ui/LanguageTags";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { StickyEnquireBar } from "@/components/ui/StickyEnquireBar";
 import { TourCard } from "@/components/ui/TourCard";
 import { faqTeaser } from "@/content/faqs";
-import { getTour, tourIncludes, tours } from "@/content/tours";
+import { getTour, tourFullName, tourIncludes, tours } from "@/content/tours";
 
 export function generateStaticParams() {
   return tours.map((tour) => ({ slug: tour.slug }));
@@ -24,7 +24,9 @@ export async function generateMetadata({
   const tour = getTour(slug);
   if (!tour) return {};
   return {
-    title: tour.title,
+    // The descriptive name is what gets searched for, so it belongs in the
+    // <title> even though the detail page leads with the evocative one.
+    title: tourFullName(tour),
     description: tour.summary,
     alternates: { canonical: `/tours/${tour.slug}` },
   };
@@ -39,10 +41,16 @@ export default async function TourDetailPage({
 
   const related = tours.filter((t) => t.slug !== tour.slug).slice(0, 3);
 
-  const quickFacts = [
-    { icon: "clock" as const, label: "Duration", value: tour.duration },
+  // Duration and group size are omitted for tours the client has not
+  // confirmed them for, rather than guessed at.
+  const quickFacts: { icon: IconName; label: string; value: string }[] = [
+    ...(tour.duration
+      ? [{ icon: "clock" as const, label: "Duration", value: tour.duration }]
+      : []),
     { icon: "pin" as const, label: "Location", value: tour.location },
-    { icon: "users" as const, label: "Group", value: tour.groupType },
+    ...(tour.groupType
+      ? [{ icon: "users" as const, label: "Group", value: tour.groupType }]
+      : []),
     {
       icon: "globe" as const,
       label: "Price",
@@ -67,7 +75,7 @@ export default async function TourDetailPage({
         <div className="absolute inset-0 bg-navy-900/55" />
         <Container className="relative">
           <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-navy-200">
-            {tour.strapline ?? tour.categories.join(" · ")}
+            {tour.subtitle ?? tour.categories.join(" · ")}
           </p>
           <h1 className="max-w-3xl text-[2.25rem] leading-[1.08] text-white sm:text-[3rem] lg:text-[3.5rem]">
             {tour.title}
@@ -134,11 +142,23 @@ export default async function TourDetailPage({
                 </>
               )}
 
+              {tour.sections?.map((section) => (
+                <div key={section.heading}>
+                  <h2 className="mt-14 text-[1.75rem] sm:text-[2rem]">
+                    {section.heading}
+                  </h2>
+                  <p className="mt-5 text-lg leading-relaxed text-ink-muted">
+                    {section.body}
+                  </p>
+                </div>
+              ))}
+
               {tour.detailsPending ? (
                 <div className="mt-14 rounded-2xl border border-line bg-mist p-6 leading-relaxed text-ink-muted">
-                  Full details for this day trip — the itinerary, meeting point,
-                  what is included and the price — are being finalised. Send an
-                  enquiry with your dates and we will send everything through.
+                  Full details for this tour — the itinerary, meeting point
+                  {tour.priceFrom ? " and what is included" : ", what is included and the price"} —
+                  are being finalised. Send an enquiry with your dates and we
+                  will send everything through.
                 </div>
               ) : (
                 <div className="mt-14 grid gap-10 sm:grid-cols-2">
@@ -164,7 +184,10 @@ export default async function TourDetailPage({
               )}
 
               {/* Skipped entirely when a tour has none of these yet */}
-              {(tour.meetingPoint || tour.endPoint || tour.whoFor) && (
+              {(tour.meetingPoint ||
+                tour.endPoint ||
+                tour.whoFor ||
+                tour.walking) && (
                 <div className="mt-14 grid gap-10 sm:grid-cols-2">
                   {tour.meetingPoint && (
                     <div>
@@ -179,6 +202,14 @@ export default async function TourDetailPage({
                       <h3 className="text-xl">Where we finish</h3>
                       <p className="mt-4 leading-relaxed text-ink-muted">
                         {tour.endPoint}
+                      </p>
+                    </div>
+                  )}
+                  {tour.walking && (
+                    <div>
+                      <h3 className="text-xl">Walking</h3>
+                      <p className="mt-4 leading-relaxed text-ink-muted">
+                        {tour.walking}
                       </p>
                     </div>
                   )}
@@ -258,7 +289,7 @@ export default async function TourDetailPage({
             intro="Tell us your dates, your group and your language, and we will come back to you personally."
             align="center"
           />
-          <EnquiryForm defaultTour={tour.title} className="mt-12" />
+          <EnquiryForm defaultTour={tourFullName(tour)} className="mt-12" />
         </Container>
       </section>
 

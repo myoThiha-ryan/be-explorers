@@ -39,7 +39,7 @@ export const faqGroups: FaqGroup[] = [
       {
         question: "What types of tours do you offer?",
         answer:
-          "We offer London walking tours including City of Westminster, City of London, Notting Hill, Harry Potter, and Canary Wharf & Greenwich, as well as day trips to Oxford, Cambridge, Windsor Castle and Stonehenge.",
+          "We offer London walking tours including City of Westminster, City of London, Notting Hill, Harry Potter, and Canary Wharf & Greenwich, as well as full-day trips from London to Windsor, Stonehenge and Bath, or to Oxford and Cambridge.",
       },
       {
         question: "Are your tours private or shared?",
@@ -49,7 +49,7 @@ export const faqGroups: FaqGroup[] = [
       {
         question: "Do you offer tours outside London?",
         answer:
-          "Yes. In addition to exploring London, we offer day trips from London to Oxford, Cambridge, Windsor Castle and Stonehenge, allowing you to discover more of England in a single day.",
+          "Yes. In addition to exploring London, we offer full-day trips from London — Windsor, Stonehenge and Bath, or Oxford and Cambridge — allowing you to discover more of England in a single day.",
       },
       {
         question: "Where do the tours start and finish?",

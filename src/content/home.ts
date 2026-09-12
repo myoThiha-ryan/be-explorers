@@ -7,7 +7,14 @@ export const hero = {
     "Walking tours and day trips across London and beyond, guided in English, Myanmar and German.",
   primaryCta: { label: "Explore Tours", href: "/tours" },
   secondaryCta: { label: "Plan Your Tour", href: "/contact" },
+  /** Always shown: the LCP element, and the fallback whenever the video is not playing. */
   image: images.heroLondon,
+  /**
+   * Optional background video, layered over `image`. See public/video/README.md
+   * for the specification. Empty means the hero is the photograph alone, which
+   * is the current design.
+   */
+  videoSources: [] as { src: string; type: string }[],
 };
 
 export type Offer = {
@@ -39,7 +46,7 @@ export const offers: Offer[] = [
   },
   {
     title: "Day Trips from London",
-    body: "Explore Oxford, Cambridge, Windsor Castle and Stonehenge.",
+    body: "Two full days out of the capital: Windsor, Stonehenge and Bath, or Oxford and Cambridge.",
     href: "/tours",
     icon: "map",
   },
@@ -64,6 +71,11 @@ export const benefits: Benefit[] = [
     icon: "compass",
   },
   {
+    title: "Friendly & Affordable",
+    body: "Great experiences without making travel unnecessarily complicated or expensive.",
+    icon: "check",
+  },
+  {
     title: "Carefully Planned Itineraries",
     body: "Our tours are designed in advance to give you an enjoyable and well-organised experience.",
     icon: "map",
@@ -80,11 +92,6 @@ export const benefits: Benefit[] = [
     body: "Our tours are available in three languages, welcoming travellers from around the world.",
     icon: "globe",
   },
-  {
-    title: "Friendly & Affordable",
-    body: "Great experiences without making travel unnecessarily complicated or expensive.",
-    icon: "check",
-  },
 ];
 
 export const destinations = [
@@ -98,30 +105,37 @@ export const destinations = [
   {
     name: "Oxford",
     note: "Colleges, courtyards and the Radcliffe Camera",
-    href: "/tours/oxford-day-tour",
+    href: "/tours/oxford-and-cambridge",
     image: images.oxford,
     span: "narrow" as const,
   },
   {
     name: "Cambridge",
     note: "The Backs, King's College and the river",
-    href: "/tours/cambridge-day-tour",
+    href: "/tours/oxford-and-cambridge",
     image: images.cambridge,
-    span: "narrow" as const,
+    span: "half" as const,
   },
   {
     name: "Windsor Castle",
     note: "The oldest occupied castle in the world",
-    href: "/tours/windsor-castle-day-tour",
+    href: "/tours/windsor-stonehenge-and-bath",
     image: images.windsor,
-    span: "narrow" as const,
+    span: "half" as const,
   },
   {
     name: "Stonehenge",
     note: "Five thousand years of standing stones, in a day",
-    href: "/tours/stonehenge-day-tour",
+    href: "/tours/windsor-stonehenge-and-bath",
     image: images.stonehenge,
-    span: "narrow" as const,
+    span: "half" as const,
+  },
+  {
+    name: "Bath",
+    note: "Roman baths, Georgian crescents and honey-coloured stone",
+    href: "/tours/windsor-stonehenge-and-bath",
+    image: images.bath,
+    span: "half" as const,
   },
 ];
 
@@ -182,9 +196,14 @@ export const closingCta = {
   secondary: { label: "Get in Touch", href: "/contact" },
 };
 
+/**
+ * Real tour photography from the client, replacing the stock London shots.
+ * `images.akParliamentSquare` is deliberately left out: it is near-identical
+ * to the guide portrait higher up the same page.
+ */
 export const socialGrid = [
-  images.bigBenSunset,
-  images.boudica,
-  images.thamesWestminster,
-  images.towerBridgeDusk,
+  images.akPhoneBox,
+  images.akBuckinghamPalace,
+  images.akTheMall,
+  images.akGroupSteps,
 ];

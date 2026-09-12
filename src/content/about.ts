@@ -1,3 +1,4 @@
+import { images } from "@/content/images";
 import { site } from "@/content/site";
 
 /**
@@ -59,3 +60,16 @@ export const story = [
     body: `${site.name} also offers private, family and corporate tours, with selected experiences available as carefully planned itineraries and tailor-made experiences to suit your needs. Tell us your interests, schedule, group size and preferred destinations, and we will build the tour around them.`,
   },
 ];
+
+/**
+ * AK on tour, supplied by the client. The three portraits sit in a row above
+ * the wide shot of The Mall, so each photograph keeps its own shape rather
+ * than being cropped into a uniform tile.
+ */
+export const gallery = {
+  heading: "On tour with AK",
+  intro:
+    "Real groups, real mornings in London — no two tours are quite the same.",
+  portraits: [images.akPhoneBox, images.akBuckinghamPalace, images.akGroupSteps],
+  wide: images.akTheMall,
+};

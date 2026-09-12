@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { CTABanner } from "@/components/ui/CTABanner";
 import { Container } from "@/components/ui/Container";
 import { GuidePortrait } from "@/components/ui/GuidePortrait";
 import { Icon } from "@/components/ui/Icon";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { guide, story, timeline } from "@/content/about";
+import { gallery, guide, story, timeline } from "@/content/about";
 import { benefits } from "@/content/home";
 import { site } from "@/content/site";
 
@@ -96,6 +97,39 @@ export default function AboutPage() {
       </section>
 
       <section className="py-20 md:py-28">
+        <Container>
+          <SectionHeading title={gallery.heading} intro={gallery.intro} />
+
+          <div className="mt-14 grid gap-4 sm:grid-cols-3">
+            {gallery.portraits.map((image) => (
+              <div
+                key={image.src}
+                className="relative aspect-4/3 overflow-hidden rounded-2xl bg-mist sm:aspect-4/5"
+              >
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  sizes="(min-width: 640px) 33vw, 100vw"
+                  className="object-cover"
+                />
+              </div>
+            ))}
+          </div>
+
+          <div className="relative mt-4 aspect-4/3 overflow-hidden rounded-2xl bg-mist sm:aspect-2/1">
+            <Image
+              src={gallery.wide.src}
+              alt={gallery.wide.alt}
+              fill
+              sizes="100vw"
+              className="object-cover"
+            />
+          </div>
+        </Container>
+      </section>
+
+      <section className="bg-mist py-20 md:py-28">
         <Container size="narrow">
           <div className="space-y-14">
             {story.map((item) => (
@@ -110,7 +144,7 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <section className="bg-mist py-20 md:py-28">
+      <section className="py-20 md:py-28">
         <Container>
           <SectionHeading title="Why travel with us" align="center" />
           <ul className="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">

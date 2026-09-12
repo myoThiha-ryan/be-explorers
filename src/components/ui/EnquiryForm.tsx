@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { languages, site } from "@/content/site";
-import { tours } from "@/content/tours";
+import { tourFullName, tours } from "@/content/tours";
 import { cn } from "@/lib/cn";
 
 type Status = "idle" | "sending" | "sent" | "error";
@@ -131,8 +131,8 @@ export function EnquiryForm({ defaultTour, className }: Props) {
           <select id="tour" name="tour" defaultValue={defaultTour ?? ""} className={fieldClasses}>
             <option value="">Not sure yet</option>
             {tours.map((tour) => (
-              <option key={tour.slug} value={tour.title}>
-                {tour.title}
+              <option key={tour.slug} value={tourFullName(tour)}>
+                {tourFullName(tour)}
               </option>
             ))}
             <option value="Custom tour">Something custom</option>

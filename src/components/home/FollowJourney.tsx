@@ -10,7 +10,8 @@ export function FollowJourney() {
     <section className="border-t border-sand-200 py-20 md:py-28">
       <Container>
         <SectionHeading
-          eyebrow="Instagram · Facebook · TikTok"
+          // Derived, so adding a network in site.ts updates the label too
+          eyebrow={socials.map((social) => social.label).join(" · ")}
           tone="warm"
           title="Follow the Journey"
           intro="Corners of London, day trips and whatever the weather is doing — shared as we go."

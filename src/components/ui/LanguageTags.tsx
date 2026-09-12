@@ -27,7 +27,7 @@ export function LanguageTags({ codes, className, tone = "light" }: Props) {
               myanmar ? "font-my py-1 leading-[1.9]" : "py-1 leading-5",
               tone === "dark"
                 ? "border-white/30 text-white"
-                : "border-line bg-mist text-ink-muted",
+                : "border-clay-200 bg-clay-100 text-clay-700",
             )}
           >
             {language.native}

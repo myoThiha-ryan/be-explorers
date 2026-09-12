@@ -162,29 +162,24 @@ password protection is a paid feature.
       by the client and renders in `GuidePortrait` on the homepage and About
       page. Its alt text does not name anyone — if the person in it is A Kay
       Mon, name her in `images.guidePortrait.alt` for accessibility and search
-- [ ] Confirm the enquiry email in `src/content/site.ts`. The client's FAQ
-      document gives `info@beexplorerstravel.com`, but the address in the code is
-      `inquiry@beexplorertravelandtour.com` as separately instructed — these are
-      two different domains, so check which is correct
 - [ ] Confirm `+44 7852 583872` is reachable on WhatsApp — the contact page and
       form confirmation both offer it as a WhatsApp number
 - [ ] Replace the placeholder social URLs in `src/content/site.ts`
 - [ ] Replace the testimonials in `src/content/home.ts` with real ones
-- [ ] Add the real content for the five tours marked `detailsPending` in
-      `tours.ts` — Canary Wharf & Greenwich, Oxford, Cambridge, Windsor Castle
-      and Stonehenge. They currently show "Price on enquiry" and a short notice
-      instead of an itinerary. Remove the flag once the details are in
+- [ ] Add the itinerary, meeting point and what's-included list for Canary
+      Wharf & Greenwich — the one tour still marked `detailsPending` in
+      `tours.ts`. Its price is set; only the detail is missing. Remove the flag
+      once it is in
 - [ ] Add a meeting point for the Westminster tour — it is the one walking tour
       without one, so its detail page omits that section
 - [ ] Wire up enquiry delivery (`.env.example`)
 - [ ] Have the Privacy Policy and Terms reviewed — both are placeholder wording
-- [ ] Replace the placeholder favicon in `src/app/icon.tsx` with the real logo
 - [ ] Set `SITE_INDEXABLE=true` on the production environment and redeploy, so
       the site can be indexed (it is deliberately noindex until then)
-- [ ] Set `site.url` in `src/content/site.ts` to the live domain. It is still
-      `beexplorers.co.uk`, but the enquiry address is on
-      `beexplorertravelandtour.com` — confirm which domain the site will use, as
-      this one drives the canonical and Open Graph URLs
+- [ ] Serve the site from one canonical host. `site.url` is
+      `https://beexplorerstravelandtours.com` (no `www`), and it drives the
+      canonical link, Open Graph URLs and `robots.txt` — so configure the host
+      to redirect `www` to the bare domain rather than serving both
 
 ## Not built yet
 

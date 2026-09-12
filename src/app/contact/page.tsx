@@ -9,7 +9,7 @@ import { site, socials } from "@/content/site";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Send an enquiry about a London walking tour or a day trip to Oxford, Cambridge, Windsor Castle or Stonehenge, guided in English, Myanmar or German.",
+    "Send an enquiry about a London walking tour or a full-day trip to Windsor, Stonehenge and Bath, or Oxford and Cambridge, guided in English, Myanmar or German.",
 };
 
 export default function ContactPage() {

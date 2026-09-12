@@ -10,12 +10,19 @@ export type TourCategory =
 
 export type Tour = {
   slug: string;
+  /** The name the tour is sold under, e.g. "London's Royal & Political Heart" */
   title: string;
-  /** Sits above the title on the detail page, e.g. "London's Royal & Political Heart" */
-  strapline?: string;
+  /**
+   * The plain descriptive name, set smaller above the title on the detail page
+   * and under it on a card, e.g. "Westminster Walking Tour". It is what people
+   * actually search for, so it also goes into the page title and the enquiry
+   * form even though it is the quieter of the two on screen.
+   */
+  subtitle?: string;
   location: string;
-  duration: string;
-  groupType: string;
+  /** Optional: some tours have no confirmed running time yet */
+  duration?: string;
+  groupType?: string;
   /** Shown as "from £X" — omit to show "Price on enquiry" */
   priceFrom?: number;
   priceUnit?: "per group" | "per person";
@@ -35,6 +42,10 @@ export type Tour = {
   highlights?: string[];
   meetingPoint?: string;
   endPoint?: string;
+  /** How much walking the day involves, e.g. "Moderate walking" */
+  walking?: string;
+  /** Longer descriptions, one per place visited — used by the day trips */
+  sections?: { heading: string; body: string }[];
   /** Overrides `tourIncludes` when a tour differs from the standard walk */
   included?: string[];
   notIncluded?: string[];
@@ -58,13 +69,22 @@ export const tourIncludes = {
   ],
 };
 
-/** Shared by every £20-per-person walking tour. */
-const walkingTour = {
-  duration: "2 hours",
+/**
+ * The standard London tour price. Per the client's FAQ: "The London walking
+ * tours are £20 per person. Children under 18 go free, and special rates are
+ * available for families, private groups and corporate bookings."
+ */
+const londonPricing = {
   priceFrom: 20,
   priceUnit: "per person" as const,
   priceNote:
     "Free for under-18s · special rates for families and companies booking privately",
+};
+
+/** Shared by every £20-per-person walking tour. */
+const walkingTour = {
+  duration: "2 hours",
+  ...londonPricing,
   groupType: "Small group · private tours on request",
   languages: ["en", "de", "my"] as LanguageCode[],
   categories: ["London", "Walking Tours", "Private Tours"] as TourCategory[],
@@ -74,8 +94,8 @@ export const tours: Tour[] = [
   {
     ...walkingTour,
     slug: "westminster-walking-tour",
-    title: "Westminster Walking Tour",
-    strapline: "London's Royal & Political Heart",
+    title: "London's Royal & Political Heart",
+    subtitle: "Westminster Walking Tour",
     location: "Westminster, London",
     summary:
       "Big Ben, the Houses of Parliament, Westminster Abbey, Downing Street and Buckingham Palace — the landmarks at the centre of Britain's history, and the stories behind them.",
@@ -101,8 +121,8 @@ export const tours: Tour[] = [
   {
     ...walkingTour,
     slug: "city-of-london-walking-tour",
-    title: "City of London Walking Tour",
-    strapline: "London's Ancient & Financial Heart",
+    title: "London's Ancient & Financial Heart",
+    subtitle: "City of London Walking Tour",
     location: "The City of London",
     summary:
       "From the Roman origins of London to the modern financial centre — Tower Hill, the Tower of London, Leadenhall Market and the Bank of England, finishing at St Paul's Cathedral.",
@@ -135,7 +155,7 @@ export const tours: Tour[] = [
     ...walkingTour,
     slug: "notting-hill-uncovered",
     title: "Notting Hill Uncovered",
-    strapline: "Film, Colour & Culture",
+    subtitle: "Film, Colour & Culture",
     location: "Notting Hill, London",
     summary:
       "Colourful streets, Victorian villas, Portobello Market and the film locations that made the neighbourhood famous — finishing at the Blue Door.",
@@ -167,8 +187,8 @@ export const tours: Tour[] = [
   {
     ...walkingTour,
     slug: "harry-potter-walking-tour",
-    title: "Harry Potter Walking Tour",
-    strapline: "The Magic of London",
+    title: "The Magic of London",
+    subtitle: "Harry Potter Walking Tour",
     location: "West End, London",
     summary:
       "The Palace Theatre, The House of Spells, Charing Cross Road and Great Scotland Yard — the magical side of London, for lifelong fans and muggles alike.",
@@ -198,10 +218,11 @@ export const tours: Tour[] = [
   {
     slug: "canary-wharf-and-greenwich",
     title: "Canary Wharf & Greenwich",
-    strapline: "Modern London & Maritime Heritage",
+    subtitle: "Modern London & Maritime Heritage",
     location: "Canary Wharf & Greenwich, London",
     duration: "Half day",
     groupType: "Small group · private tours on request",
+    ...londonPricing,
     summary:
       "Experience modern London alongside its fascinating maritime heritage — the towers of Canary Wharf and the historic charm of Greenwich.",
     languages: ["en", "de", "my"],
@@ -214,88 +235,106 @@ export const tours: Tour[] = [
   },
 
   /* ------------------------------------------------------------------
-     Day trips. Final content for these has not been supplied yet, so the
-     copy below is placeholder and no price is published. Add the real
-     itinerary, meeting point and price, then remove `detailsPending`.
+     Day trips, from the client's "2MoreToursOutsideofLondon" document.
+     Both are priced on enquiry — the document says "Contact us for the
+     price", so that is the model rather than a missing figure. American
+     spellings in the source have been normalised to British English.
   ------------------------------------------------------------------ */
   {
-    slug: "oxford-day-tour",
-    title: "Oxford Day Tour",
-    location: "Oxford · from London",
-    duration: "Full day",
-    groupType: "Private · small groups",
+    slug: "windsor-stonehenge-and-bath",
+    title: "Royalty, Mystery & Elegance",
+    subtitle: "Windsor, Stonehenge & Bath",
+    location: "Windsor, Stonehenge & Bath · from London",
+    duration: "About 12 hours",
+    groupType: "Private tour, just for you and the people you travel with",
     summary:
-      "Ancient colleges, the Radcliffe Camera and the quiet quadrangles of England's oldest university, an easy day trip from central London.",
+      "Windsor Castle and St George's Chapel, the standing stones on Salisbury Plain, and Georgian Bath with entry to the Roman Baths — collected from your hotel and returned to it.",
     languages: ["en", "de", "my"],
     categories: ["Day Trips", "Full Day", "Private Tours"],
     intro: [
-      "A day trip from London to Oxford, walking the colleges and side streets of the oldest university in the English-speaking world.",
+      "Three of England's great sights in a single day: the oldest and largest inhabited castle in the world, a stone circle raised 5,000 years ago, and a city built around a Roman spring.",
     ],
     highlights: [
-      "The Radcliffe Camera and the Bodleian Library",
-      "A college quadrangle and dining hall",
-      "The Bridge of Sighs and New College Lane",
-      "The Covered Market, and lunch among students",
+      "Windsor Castle, including St George's Chapel",
+      "Stonehenge, and the visitor centre on Salisbury Plain",
+      "Bath, with entrance to the Roman Baths",
     ],
-    whoFor:
-      "Anyone with a spare day and an interest in history, books or film locations.",
-    image: images.oxford,
-    detailsPending: true,
-  },
-  {
-    slug: "cambridge-day-tour",
-    title: "Cambridge Day Tour",
-    location: "Cambridge · from London",
-    duration: "Full day",
-    groupType: "Private · small groups",
-    summary:
-      "College courtyards, King's College Chapel and an afternoon punt along the Backs at the pace of the river.",
-    languages: ["en", "de", "my"],
-    categories: ["Day Trips", "Full Day", "Private Tours"],
-    intro: [
-      "A day in Cambridge at the pace of the river: colleges in the morning, punting along the Backs in the afternoon.",
+    sections: [
+      {
+        heading: "Windsor",
+        body: "Begin your British journey at Windsor Castle, the world's oldest and largest inhabited fortress, which has served as a royal residence for more than nine centuries. Inside, explore the lavish State Apartments to view Queen Victoria's statue, the historic Waterloo Chamber, the regal Monarch's Chambers, and fine art collections featuring works by Leonardo da Vinci and Rembrandt. Enter St George's Chapel, the venue for royal weddings — such as Prince Harry and Meghan Markle's — and the final resting place of Queen Elizabeth II. On Thursdays and Saturdays, witness the Changing of the Guard, complete with traditional red coats, bearskin hats and military music. Note that Windsor Castle is closed on Tuesdays and Wednesdays; tours running on those days include a guided walking tour of Windsor town instead.",
+      },
+      {
+        heading: "Stonehenge",
+        body: "Marvel at Stonehenge, the ancient stone monument recognised as one of the world's great historic wonders. Standing on Salisbury Plain for roughly 5,000 years, these Neolithic monoliths continue to spark debate over their origins, purpose and construction. Enhance your visit at the world-class visitor centre, home to 250 excavated artefacts, art displays, archival photographs, a gift shop and a café. Step outside to walk through recreated Neolithic dwellings based on archaeological finds from 2006 and 2007.",
+      },
+      {
+        heading: "Bath",
+        body: "Discover Bath, an entire city designated a UNESCO World Heritage site for its magnificent Georgian architecture. Its premier historic highlight, the ancient Roman Baths, offers a close-up look at the naturally heated thermal waters. Sample the mineral-rich spa water inside the historic Pump Room, or stroll down cobblestone lanes to see Bath Abbey, the Royal Crescent and Pulteney Bridge. Literature enthusiasts can also visit the Jane Austen Centre for a traditional Regency afternoon tea.",
+      },
     ],
-    highlights: [
-      "King's College Chapel and its fan vaulting",
-      "The Backs and the Mathematical Bridge",
-      "A punt along the River Cam",
-      "The market square and the old town",
+    meetingPoint:
+      "At your hotel at 07:30. We collect you from your hotel and drop you back there at the end of the day.",
+    endPoint: "Back at your hotel.",
+    walking: "Moderate walking",
+    included: [
+      "Transportation",
+      "Your tour guide for the whole day",
+      "A bottle of water",
+      "Entrance fees",
+      "Hotel pick-up and drop-off",
     ],
-    whoFor: "Couples, families and travellers who prefer a quieter day out.",
-    image: images.cambridge,
-    detailsPending: true,
-  },
-  {
-    slug: "windsor-castle-day-tour",
-    title: "Windsor Castle Day Tour",
-    location: "Windsor · from London",
-    duration: "Full day",
-    groupType: "Private · small groups",
-    summary:
-      "The oldest occupied castle in the world, the Long Walk and the riverside town beneath it — an easy day out from London.",
-    languages: ["en", "de", "my"],
-    categories: ["Day Trips", "Full Day", "Private Tours"],
-    intro: [
-      "A day at Windsor: the castle, St George's Chapel and the town along the Thames beneath it.",
-    ],
+    notIncluded: ["Lunch", "Snacks", "Tips"],
     image: images.windsor,
-    detailsPending: true,
   },
   {
-    slug: "stonehenge-day-tour",
-    title: "Stonehenge Day Tour",
-    location: "Salisbury Plain · from London",
-    duration: "Full day",
-    groupType: "Private · small groups",
+    slug: "oxford-and-cambridge",
+    title: "England's Academic Heritage",
+    subtitle: "Oxford & Cambridge",
+    location: "Oxford & Cambridge · from London",
     summary:
-      "Five thousand years of standing stones on Salisbury Plain, and the story of the people who raised them.",
+      "Christ Church College in Oxford, King's College and the Corpus Clock in Cambridge — both of England's ancient university cities in a single day, door to door from your hotel.",
     languages: ["en", "de", "my"],
-    categories: ["Day Trips", "Full Day", "Private Tours"],
+    categories: ["Day Trips", "Private Tours"],
     intro: [
-      "A day trip west from London to Stonehenge, one of the most remarkable prehistoric monuments in the world.",
+      "Two university cities that between them have taught much of the English-speaking world — walked with a guide, with entry to the colleges at the heart of both.",
     ],
-    image: images.stonehenge,
-    detailsPending: true,
+    highlights: [
+      "Christ Church College, Oxford — a Harry Potter filming location",
+      "King's College, Cambridge, and the Corpus Clock",
+      "Guided walking tours of both cities",
+    ],
+    sections: [
+      {
+        heading: "Cambridge",
+        body: "Discover the historic university city of Cambridge, starting with the neoclassically designed Senate House — formerly the assembly site for the Senate Council, and today the ceremonial stage for university graduations. Continue to admire the Corpus Clock at Corpus Christi College's Taylor Library, a striking and mechanically inventive masterpiece of modern clockmaking.",
+      },
+      {
+        heading: "King's College Chapel",
+        body: "Step inside King's College Chapel, a premier Cambridge landmark commissioned by Henry VI in 1446. Famous for its magnificent Gothic architecture, intricate medieval stained glass and exceptional acoustics, it offers a deep dive into the history of King's College and its world-renowned choir.",
+      },
+      {
+        heading: "Walking tour of Oxford",
+        body: "Trace the steps of scholars through Oxford, home to the English-speaking world's oldest university. Your guided walk takes you past the iconic Bodleian Library and through historic squares, quiet medieval alleys and beneath the city's famous dreaming spires.",
+      },
+      {
+        heading: "Christ Church",
+        body: "Explore the grand courtyards of Christ Church College alongside current students. Harry Potter enthusiasts will instantly spot several film locations throughout the grounds, most notably the Great Hall, which was the inspiration and setting for Hogwarts' dining hall.",
+      },
+    ],
+    meetingPoint:
+      "At your hotel at 08:00. We collect you from your hotel and drop you back there at the end of the day.",
+    endPoint: "Back at your hotel.",
+    walking: "Moderate walking",
+    included: [
+      "Transportation",
+      "Your tour guide for the whole day",
+      "A bottle of water",
+      "Entrance fees",
+      "Hotel pick-up and drop-off",
+    ],
+    notIncluded: ["Lunch", "Snacks", "Tips"],
+    image: images.oxford,
   },
 ];
 
@@ -310,3 +349,11 @@ export const tourCategories: TourCategory[] = [
 ];
 
 export const getTour = (slug: string) => tours.find((t) => t.slug === slug);
+
+/**
+ * Both names together, for the places that have to be unambiguous rather than
+ * evocative: the browser/search-result title, and the tour an enquiry names.
+ * "London's Royal & Political Heart" alone tells AK very little in an inbox.
+ */
+export const tourFullName = (tour: Tour) =>
+  tour.subtitle ? `${tour.title} — ${tour.subtitle}` : tour.title;

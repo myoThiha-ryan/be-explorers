@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { HeroVideo } from "@/components/home/HeroVideo";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { hero } from "@/content/home";
@@ -16,6 +17,10 @@ export function Hero() {
         sizes="100vw"
         className="object-cover"
       />
+      {hero.videoSources.length > 0 && (
+        <HeroVideo sources={hero.videoSources} />
+      )}
+
       {/* Scrims: keep the type readable without washing out the photograph.
           A light overall wash, a top band for the transparent header, and a
           stronger foot where the headline sits. The wash is deliberately

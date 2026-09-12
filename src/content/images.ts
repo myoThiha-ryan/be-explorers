@@ -60,9 +60,31 @@ export const images = {
     alt: "Your BeExplorers guide in Parliament Square, with Big Ben and the Houses of Parliament behind",
   },
 
+  /* AK on tour, supplied by the client. Used in the Follow the Journey grid. */
+  akPhoneBox: {
+    src: "/images/ak-phone-box.jpg",
+    alt: "A BeExplorers group beside a red telephone box near Westminster station",
+  },
+  akBuckinghamPalace: {
+    src: "/images/ak-buckingham-palace.jpg",
+    alt: "A BeExplorers group in front of Buckingham Palace and the Victoria Memorial",
+  },
+  akTheMall: {
+    src: "/images/ak-the-mall.jpg",
+    alt: "A BeExplorers walking group listening to their guide on The Mall",
+  },
+  akGroupSteps: {
+    src: "/images/ak-group-steps.jpg",
+    alt: "A BeExplorers group of adults and children on the steps of a London townhouse",
+  },
+  akParliamentSquare: {
+    src: "/images/ak-parliament-square.jpg",
+    alt: "The BeExplorers guide with her red umbrella outside Westminster Abbey",
+  },
+
   nottingHill: {
-    src: "/images/notting-hill-mews.jpg",
-    alt: "A cobbled mews of Victorian houses in Notting Hill, London",
+    src: "/images/notting-hill-colourful-houses.jpg",
+    alt: "A terrace of pastel-painted Victorian houses on Lancaster Road, Notting Hill",
   },
   palaceTheatre: {
     src: "/images/palace-theatre.jpg",
@@ -91,6 +113,10 @@ export const images = {
   windsor: {
     src: "/images/windsor-castle.jpg",
     alt: "The Henry VIII Gateway at Windsor Castle",
+  },
+  bath: {
+    src: "/images/bath-roman-baths.jpg",
+    alt: "The Great Bath at the Roman Baths, with Bath Abbey rising behind it",
   },
 } satisfies Record<string, SiteImage>;
 

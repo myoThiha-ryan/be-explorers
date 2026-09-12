@@ -16,6 +16,7 @@ export type IconName =
   | "instagram"
   | "facebook"
   | "tiktok"
+  | "youtube"
   | "check";
 
 const paths: Record<IconName, React.ReactNode> = {
@@ -88,11 +89,24 @@ const paths: Record<IconName, React.ReactNode> = {
   tiktok: (
     <path d="M16.9 2.5h-3v12.2a2.55 2.55 0 1 1-2.1-2.5V9.1a5.6 5.6 0 1 0 5.1 5.6V9.4a6.5 6.5 0 0 0 3.4 1V7.4a3.5 3.5 0 0 1-3.4-3.4V2.5Z" />
   ),
+  // evenodd so the play triangle knocks out of the rounded body
+  youtube: (
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M21.6 7.2a2.51 2.51 0 0 0-1.77-1.78C18.26 5 12 5 12 5s-6.26 0-7.83.42A2.51 2.51 0 0 0 2.4 7.2 26.2 26.2 0 0 0 2 12c0 1.61.13 3.22.4 4.8a2.51 2.51 0 0 0 1.77 1.78C5.74 19 12 19 12 19s6.26 0 7.83-.42a2.51 2.51 0 0 0 1.77-1.78c.27-1.58.4-3.19.4-4.8 0-1.61-.13-3.22-.4-4.8ZM10 15.2V8.8l5.2 3.2-5.2 3.2Z"
+    />
+  ),
   check: <path d="m5 12.5 4.5 4.5L19 7.5" />,
 };
 
 /** Brand marks read better as solid shapes than as outlines. */
-const filled = new Set<IconName>(["facebook", "tiktok", "whatsapp"]);
+const filled = new Set<IconName>([
+  "facebook",
+  "tiktok",
+  "youtube",
+  "whatsapp",
+]);
 
 type Props = {
   name: IconName;

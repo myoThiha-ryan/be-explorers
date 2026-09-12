@@ -9,10 +9,10 @@ export const site = {
   guide: "A Kay Mon",
   tagline: "Walking tours and day trips across London and beyond.",
   description:
-    "Shared and private walking tours of London — Westminster, the City, Notting Hill, Harry Potter, Canary Wharf & Greenwich — plus day trips to Oxford, Cambridge, Windsor Castle and Stonehenge. Guided in English, Myanmar and German.",
-  url: "https://www.beexplorers.co.uk",
+    "Shared and private walking tours of London — Westminster, the City, Notting Hill, Harry Potter, Canary Wharf & Greenwich — plus full-day trips to Windsor, Stonehenge and Bath, or Oxford and Cambridge. Guided in English, Myanmar and German.",
+  url: "https://beexplorerstravelandtours.com",
   city: "London, United Kingdom",
-  email: "inquiry@beexplorertravelandtour.com",
+  email: "info@beexplorerstravel.com",
   phone: "+44 7852 583872",
   whatsapp: "+44 7852 583872",
   whatsappUrl: "https://wa.me/447852583872",
@@ -85,6 +85,12 @@ export const socials = [
   {
     label: "TikTok",
     href: "https://tiktok.com/@beexplorers",
+    handle: "@beexplorers",
+  },
+  // The only confirmed account so far — the three above are still guesses.
+  {
+    label: "YouTube",
+    href: "https://youtube.com/@beexplorers",
     handle: "@beexplorers",
   },
 ] as const;

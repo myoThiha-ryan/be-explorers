@@ -19,7 +19,7 @@ export function TourCard({ tour, priority, className, showPrice = true }: Props)
     <article className={cn("group flex flex-col", className)}>
       <Link
         href={href}
-        className="relative block aspect-[4/3] w-full overflow-hidden rounded-2xl bg-mist"
+        className="relative block aspect-4/3 w-full overflow-hidden rounded-2xl bg-mist"
         tabIndex={-1}
         aria-hidden="true"
       >
@@ -38,13 +38,15 @@ export function TourCard({ tour, priority, className, showPrice = true }: Props)
             meta wraps to a second line. */}
         <div className="flex min-h-11 flex-wrap items-start gap-x-4 gap-y-1 text-sm text-ink-muted">
           <span className="inline-flex items-center gap-1.5">
-            <Icon name="pin" className="size-4 shrink-0" />
+            <Icon name="pin" className="size-4 shrink-0 text-clay-500" />
             {tour.location}
           </span>
-          <span className="inline-flex items-center gap-1.5 whitespace-nowrap">
-            <Icon name="clock" className="size-4 shrink-0" />
-            {tour.duration}
-          </span>
+          {tour.duration && (
+            <span className="inline-flex items-center gap-1.5 whitespace-nowrap">
+              <Icon name="clock" className="size-4 shrink-0 text-clay-500" />
+              {tour.duration}
+            </span>
+          )}
         </div>
 
         <h3 className="text-2xl leading-snug">
@@ -55,6 +57,14 @@ export function TourCard({ tour, priority, className, showPrice = true }: Props)
             {tour.title}
           </Link>
         </h3>
+
+        {/* The evocative name alone doesn't say which tour this is — the plain
+            name keeps a grid of nine cards scannable. */}
+        {tour.subtitle && (
+          <p className="mt-1.5 text-[0.9375rem] text-ink-muted">
+            {tour.subtitle}
+          </p>
+        )}
 
         <p className="mt-3 leading-relaxed text-ink-muted">{tour.summary}</p>
 
