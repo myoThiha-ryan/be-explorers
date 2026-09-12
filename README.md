@@ -72,7 +72,11 @@ Defined as tokens in `src/app/globals.css`:
 
 - White page ground, deep navy (`navy-800` `#0b2545`) as the brand colour
 - `mist` (`#f4f7fa`) for secondary sections, `ink` (`#22262b`) for body copy
-- Fraunces (display) + Inter (UI/body) + Noto Sans Myanmar for Myanmar script
+- Poppins (`font-display` — headings, sub-headings, wordmark, pull quotes) +
+  DM Sans (`font-sans` — UI and body copy) + Noto Sans Myanmar for Myanmar
+  script. Poppins has no variable cut, so `src/app/layout.tsx` loads only the
+  weights in use (400/500/600, normal and italic) — add to that list before
+  using a new one, or the weight will silently fall back
 - Generous vertical rhythm (`py-20 md:py-28`), 1200px container, mobile-first
 
 Animation is deliberately minimal: one entrance on the hero copy, slow image

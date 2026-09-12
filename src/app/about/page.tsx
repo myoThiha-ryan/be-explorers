@@ -5,24 +5,14 @@ import { GuidePortrait } from "@/components/ui/GuidePortrait";
 import { Icon } from "@/components/ui/Icon";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { guide, story, timeline } from "@/content/about";
 import { benefits } from "@/content/home";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "About Us",
-  description: `${site.name} is ${site.guide} — a London guide leading walking tours and day trips in English, Myanmar and German.`,
+  description: `${site.name} is ${site.guide} — a London guide with over a decade in the travel industry, leading walking tours and day trips in English, Myanmar and German.`,
 };
-
-const story = [
-  {
-    heading: "Tours designed for curious travellers",
-    body: "Our itineraries are thoughtfully planned to make the most of your time, combining history, culture, famous landmarks and fascinating stories with a friendly and personal guiding experience.",
-  },
-  {
-    heading: "Shared, private or tailor-made",
-    body: "We offer both shared tours and private experiences, as well as corporate, group and tailor-made tours designed around your needs. Tell us your interests, schedule, group size and preferred destinations, and we will build the itinerary around them.",
-  },
-];
 
 export default function AboutPage() {
   return (
@@ -35,36 +25,17 @@ export default function AboutPage() {
 
       <section className="py-20 md:py-28">
         <Container>
-          <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-20">
-            <GuidePortrait className="aspect-4/5 w-full" priority />
-            <div>
-              <h2 className="text-[2rem] leading-[1.12] sm:text-[2.5rem]">
-                Meet your guide
-              </h2>
-              <div className="mt-6 space-y-5 text-lg leading-relaxed text-ink-muted">
-                <p>
-                  All our tours are guided by {site.guide}, an experienced travel
-                  professional who has worked in the tourism industry since 2012
-                  with internationally recognised travel companies.
-                </p>
-                <p>
-                  Tours are guided in English, Myanmar and German, which means
-                  the same city can be shown to a family from Munich, a couple
-                  from Yangon and visitors from anywhere else — and everyone can
-                  follow it comfortably.
-                </p>
-                <p>
-                  Every {site.name} tour is led personally. You are never handed
-                  to a different guide on the day.
-                </p>
-              </div>
+          <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-20">
+            {/* Sticky on wide screens: the biography beside it is long. */}
+            <div className="lg:sticky lg:top-28">
+              <GuidePortrait className="aspect-4/5 w-full" priority />
 
               <dl className="mt-10 grid gap-6 sm:grid-cols-2">
                 <div>
                   <dt className="text-xs uppercase tracking-[0.14em] text-ink-muted">
                     Based in
                   </dt>
-                  <dd className="mt-1 text-ink">London, United Kingdom</dd>
+                  <dd className="mt-1 text-ink">{site.city}</dd>
                 </div>
                 <div>
                   <dt className="text-xs uppercase tracking-[0.14em] text-ink-muted">
@@ -77,11 +48,54 @@ export default function AboutPage() {
                 </div>
               </dl>
             </div>
+
+            <div>
+              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-ink-muted">
+                {guide.eyebrow}
+              </p>
+              <h2 className="text-[2rem] leading-[1.12] sm:text-[2.5rem]">
+                {guide.heading}
+              </h2>
+              <p className="mt-5 text-xl leading-relaxed text-ink">
+                {guide.standfirst}
+              </p>
+
+              <div className="mt-8 space-y-5 text-lg leading-relaxed text-ink-muted">
+                {guide.bio.map((paragraph) => (
+                  <p key={paragraph.slice(0, 24)}>{paragraph}</p>
+                ))}
+              </div>
+
+              <p className="mt-10 border-t border-line pt-8 font-display text-2xl leading-relaxed text-navy-800">
+                {guide.closing}
+              </p>
+            </div>
           </div>
         </Container>
       </section>
 
       <section className="bg-mist py-20 md:py-28">
+        <Container size="narrow">
+          <SectionHeading title="A decade in travel" />
+          <ol className="mt-12 border-l border-line">
+            {timeline.map((entry) => (
+              <li
+                key={`${entry.year}-${entry.label}`}
+                className="grid gap-1 pb-9 pl-6 last:pb-0 sm:grid-cols-[8rem_1fr] sm:gap-6"
+              >
+                <span className="text-sm font-semibold tracking-[0.06em] text-navy-800">
+                  {entry.year}
+                </span>
+                <span className="text-lg leading-relaxed text-ink-muted">
+                  {entry.label}
+                </span>
+              </li>
+            ))}
+          </ol>
+        </Container>
+      </section>
+
+      <section className="py-20 md:py-28">
         <Container size="narrow">
           <div className="space-y-14">
             {story.map((item) => (
@@ -96,7 +110,7 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <section className="py-20 md:py-28">
+      <section className="bg-mist py-20 md:py-28">
         <Container>
           <SectionHeading title="Why travel with us" align="center" />
           <ul className="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">

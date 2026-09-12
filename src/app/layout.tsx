@@ -1,22 +1,29 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter, Noto_Sans_Myanmar } from "next/font/google";
+import { DM_Sans, Noto_Sans_Myanmar, Poppins } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { site } from "@/content/site";
 import { isIndexable } from "@/lib/seo";
 import "./globals.css";
 
-const inter = Inter({
+// Body text. Variable font, so every weight the UI uses comes from one file;
+// `opsz` lets the browser optically size between small labels and 20px prose.
+const dmSans = DM_Sans({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-inter",
+  variable: "--font-dm-sans",
+  axes: ["opsz"],
 });
 
-const fraunces = Fraunces({
+// Headings and sub-headings. Poppins has no variable cut, so each weight is a
+// separate file — keep this list to the weights actually used (400 body-ish
+// display copy, 500 headings, 600 the wordmark). Italic is for the wordmark.
+const poppins = Poppins({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-fraunces",
-  axes: ["SOFT", "WONK", "opsz"],
+  variable: "--font-poppins",
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
 });
 
 const notoMyanmar = Noto_Sans_Myanmar({
@@ -50,7 +57,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en-GB"
-      className={`${inter.variable} ${fraunces.variable} ${notoMyanmar.variable} h-full antialiased`}
+      className={`${dmSans.variable} ${poppins.variable} ${notoMyanmar.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
         <a

@@ -20,9 +20,9 @@
   --color-mist: #f4f7fa;
   --color-line: #e4eaf0;
 
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
-  --font-my: var(--font-noto-myanmar), var(--font-inter), sans-serif;
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-poppins), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-my: var(--font-noto-myanmar), var(--font-dm-sans), sans-serif;
 
   --text-display: 3.25rem;
   --text-display--line-height: 1.06;
@@ -52,8 +52,10 @@
   h2,
   h3 {
     font-family: var(--font-display);
-    font-weight: 400;
-    letter-spacing: -0.015em;
+    /* Poppins reads light at 400 in large sizes; 500 gives the headings the
+       same presence the serif had without tipping into bold. */
+    font-weight: 500;
+    letter-spacing: -0.02em;
     color: var(--color-navy-800);
     text-wrap: balance;
   }
