@@ -10,16 +10,6 @@ export const hero = {
   image: images.heroLondon,
 };
 
-export const welcome = {
-  eyebrow: "Welcome",
-  heading: `Welcome to ${site.name}`,
-  body: [
-    "Your London-based travel company for memorable experiences across London and beyond.",
-    "From the historic streets of Westminster and the City of London to the colourful neighbourhood of Notting Hill, the magic of Harry Potter, the modern skyline of Canary Wharf and the historic charm of Greenwich, our carefully planned tours make it easy to discover the best of London.",
-    "Want to explore beyond the capital? Join us on our Oxford, Cambridge, Windsor Castle and Stonehenge day trips and discover more of England in a day.",
-  ],
-};
-
 export type Offer = {
   title: string;
   body: string;
@@ -177,7 +167,7 @@ export const testimonials = [
 
 export const aboutGuide = {
   eyebrow: "Tours designed for curious travellers",
-  heading: "Your Local Guide",
+  heading: "Meet AK your Local Guide",
   body: [
     "Our itineraries are thoughtfully planned to make the most of your time, combining history, culture, famous landmarks and fascinating stories with a friendly and personal guiding experience.",
     `All our tours are guided by ${site.guide}, an experienced travel professional who has worked in the tourism industry since 2012 with internationally recognised travel companies.`,

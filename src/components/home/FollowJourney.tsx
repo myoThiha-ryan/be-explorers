@@ -7,10 +7,11 @@ import { socials } from "@/content/site";
 
 export function FollowJourney() {
   return (
-    <section className="border-t border-line py-20 md:py-28">
+    <section className="border-t border-sand-200 py-20 md:py-28">
       <Container>
         <SectionHeading
           eyebrow="Instagram · Facebook · TikTok"
+          tone="warm"
           title="Follow the Journey"
           intro="Corners of London, day trips and whatever the weather is doing — shared as we go."
           align="center"

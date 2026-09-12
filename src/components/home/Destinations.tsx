@@ -9,6 +9,7 @@ export function Destinations() {
       <Container>
         <SectionHeading
           eyebrow="Destinations"
+          tone="warm"
           title="London & Beyond"
           intro="Start in the capital, then take a day trip to Oxford, Cambridge, Windsor Castle or Stonehenge and discover more of England in a day."
         />

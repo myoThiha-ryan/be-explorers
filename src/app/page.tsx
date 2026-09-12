@@ -7,7 +7,6 @@ import { HowItWorks } from "@/components/home/HowItWorks";
 import { Languages } from "@/components/home/Languages";
 import { Testimonials } from "@/components/home/Testimonials";
 import { WaysToExplore } from "@/components/home/WaysToExplore";
-import { Welcome } from "@/components/home/Welcome";
 import { WhyBeExplorers } from "@/components/home/WhyBeExplorers";
 import { CTABanner } from "@/components/ui/CTABanner";
 import { closingCta } from "@/content/home";
@@ -16,11 +15,10 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <Welcome />
+      <AboutGuide />
       <FeaturedTours />
       <WaysToExplore />
       <WhyBeExplorers />
-      <AboutGuide />
       <Languages />
       <Destinations />
       <HowItWorks />

@@ -7,7 +7,11 @@ export function Testimonials() {
   return (
     <section className="py-20 md:py-28">
       <Container>
-        <SectionHeading eyebrow="Guest stories" title="What travellers say" />
+        <SectionHeading
+          eyebrow="Guest stories"
+          tone="warm"
+          title="What travellers say"
+        />
 
         <ul className="mt-14 grid gap-10 md:grid-cols-3 md:gap-8">
           {testimonials.map((testimonial) => (

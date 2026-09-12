@@ -22,7 +22,12 @@ export function CTABanner({ heading, body, primary, secondary }: Props) {
           </p>
         )}
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <Button href={primary.href} variant="onDark" size="lg" className="w-full sm:w-auto">
+          <Button
+            href={primary.href}
+            variant="onDark"
+            size="lg"
+            className="w-full sm:w-auto"
+          >
             {primary.label}
           </Button>
           {secondary && (

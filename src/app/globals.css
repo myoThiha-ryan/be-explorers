@@ -15,6 +15,26 @@
   --color-navy-800: #0b2545;
   --color-navy-900: #071a31;
 
+  /* Warm accent family — London brick. Deliberately low-chroma: navy is the
+     only colour that gets a full-bleed field, and clay is the accent that
+     defers to it. A brighter orange here sits opposite navy on the wheel and
+     the two fight for attention. `clay-500` is also the lightest this can go
+     while keeping white button labels above 4.5:1. */
+  --color-clay-50: #fbf5f2;
+  --color-clay-100: #f6e8e1;
+  --color-clay-200: #e9cdbf;
+  --color-clay-400: #c47a5b;
+  --color-clay-500: #b05a3c;
+  --color-clay-600: #96482f;
+  --color-clay-700: #7a3a26;
+
+  /* Warm neutral surfaces — the counterpart to the cool `mist` */
+  --color-sand-50: #fdf9f3;
+  --color-sand-100: #f9f0e2;
+  --color-sand-200: #efe1ca;
+
+  --color-sun-500: #e0a03f;
+
   --color-ink: #22262b;
   --color-ink-muted: #5b6672;
   --color-mist: #f4f7fa;

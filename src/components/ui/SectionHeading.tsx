@@ -7,7 +7,8 @@ type Props = {
   align?: "left" | "center";
   /** Rendered to the right of the title on wide screens (e.g. a "View all" link) */
   aside?: React.ReactNode;
-  tone?: "light" | "dark";
+  /** `warm` is the homepage treatment: a clay eyebrow over the navy heading. */
+  tone?: "light" | "warm" | "dark";
   className?: string;
   as?: "h1" | "h2";
 };
@@ -36,7 +37,9 @@ export function SectionHeading({
           <p
             className={cn(
               "mb-4 text-xs font-semibold uppercase tracking-[0.18em]",
-              tone === "dark" ? "text-navy-200" : "text-ink-muted",
+              tone === "dark" && "text-navy-200",
+              tone === "warm" && "text-clay-600",
+              tone === "light" && "text-ink-muted",
             )}
           >
             {eyebrow}

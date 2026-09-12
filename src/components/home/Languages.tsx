@@ -20,7 +20,7 @@ export function Languages() {
             <li key={language.code} className="bg-navy-800 p-8 md:p-10">
               <p
                 className={cn(
-                  "font-display text-3xl text-white",
+                  "font-display text-3xl text-clay-200",
                   language.script === "myanmar" && "font-my text-2xl",
                 )}
               >

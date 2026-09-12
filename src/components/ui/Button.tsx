@@ -1,7 +1,13 @@
 import Link from "next/link";
 import { cn } from "@/lib/cn";
 
-type Variant = "primary" | "secondary" | "onDark" | "onDarkGhost" | "quiet";
+type Variant =
+  | "primary"
+  | "warm"
+  | "secondary"
+  | "onDark"
+  | "onDarkGhost"
+  | "quiet";
 type Size = "md" | "lg";
 
 const base =
@@ -9,6 +15,7 @@ const base =
 
 const variants: Record<Variant, string> = {
   primary: "bg-navy-800 text-white hover:bg-navy-600",
+  warm: "bg-clay-500 text-white hover:bg-clay-600",
   secondary:
     "border border-navy-200 bg-white text-navy-800 hover:border-navy-800 hover:bg-navy-50",
   onDark: "bg-white text-navy-800 hover:bg-navy-100",

@@ -64,7 +64,7 @@ export const languages: Language[] = [
   {
     code: "my",
     native: "မြန်မာ",
-    english: "Myanmar",
+    english: "Burmese (Myanmar)",
     blurb:
       "Tours in Myanmar for travellers and families visiting London from around the world.",
     script: "myanmar",

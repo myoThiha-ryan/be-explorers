@@ -7,10 +7,11 @@ import { featuredTours } from "@/content/tours";
 
 export function FeaturedTours() {
   return (
-    <section id="tours" className="bg-mist py-20 md:py-28">
+    <section id="tours" className="py-20 md:py-28">
       <Container>
         <SectionHeading
           eyebrow="Featured"
+          tone="warm"
           title="Explore Our Tours"
           intro="From iconic London landmarks to memorable day trips, discover experiences designed around you."
           aside={
