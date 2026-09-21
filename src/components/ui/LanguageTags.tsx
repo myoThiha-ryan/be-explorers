@@ -1,14 +1,28 @@
 import { languages, type LanguageCode } from "@/content/site";
 import { cn } from "@/lib/cn";
 
+/**
+ * One fill per language, so the three read apart at a glance rather than as a
+ * row of identical chips. Black, red and yellow as asked — Tailwind's own
+ * values rather than the site palette, since the brand navy and clay are not
+ * black and red.
+ *
+ * Myanmar takes black text: white on yellow is 1.6:1, far under the 4.5:1
+ * minimum, while black on it is 13.6:1.
+ */
+const swatches: Record<LanguageCode, string> = {
+  en: "bg-black text-white",
+  de: "bg-red-600 text-white",
+  my: "bg-yellow-400 text-black",
+};
+
 type Props = {
   codes: LanguageCode[];
   className?: string;
-  tone?: "light" | "dark";
 };
 
 /** Compact language indicators used on tour cards. */
-export function LanguageTags({ codes, className, tone = "light" }: Props) {
+export function LanguageTags({ codes, className }: Props) {
   return (
     <ul className={cn("flex flex-wrap items-center gap-1.5", className)}>
       {codes.map((code) => {
@@ -23,11 +37,9 @@ export function LanguageTags({ codes, className, tone = "light" }: Props) {
           <li
             key={code}
             className={cn(
-              "rounded-full border px-2.5 text-xs font-medium tracking-wide",
+              "rounded-full px-2.5 text-xs font-medium tracking-wide",
               myanmar ? "font-my py-1 leading-[1.9]" : "py-1 leading-5",
-              tone === "dark"
-                ? "border-white/30 text-white"
-                : "border-clay-200 bg-clay-100 text-clay-700",
+              swatches[code],
             )}
           >
             {language.native}

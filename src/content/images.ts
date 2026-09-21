@@ -83,16 +83,16 @@ export const images = {
   },
 
   nottingHill: {
-    src: "/images/notting-hill-colourful-houses.jpg",
-    alt: "A terrace of pastel-painted Victorian houses on Lancaster Road, Notting Hill",
+    src: "/images/notting-hill-travel-bookshop.jpg",
+    alt: "The blue and terracotta shopfront of The Travel Bookshop on Blenheim Crescent, Notting Hill",
   },
   palaceTheatre: {
     src: "/images/palace-theatre.jpg",
     alt: "The Palace Theatre in London's West End, home of Harry Potter and the Cursed Child",
   },
-  canaryWharf: {
-    src: "/images/canary-wharf.jpg",
-    alt: "The Canary Wharf skyline reflected in the Thames at night",
+  greenwich: {
+    src: "/images/greenwich-park-view.jpg",
+    alt: "The view from Greenwich Park over the Queen's House and the Old Royal Naval College, with Canary Wharf beyond",
   },
   stonehenge: {
     src: "/images/stonehenge.jpg",

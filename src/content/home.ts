@@ -39,9 +39,9 @@ export const offers: Offer[] = [
     icon: "compass",
   },
   {
-    title: "Canary Wharf & Greenwich",
-    body: "Experience modern London alongside its fascinating maritime heritage.",
-    href: "/tours/canary-wharf-and-greenwich",
+    title: "Greenwich",
+    body: "Royal history, maritime heritage and the Prime Meridian, on foot.",
+    href: "/tours/greenwich-walking-tour",
     icon: "globe",
   },
   {

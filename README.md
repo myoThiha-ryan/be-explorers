@@ -166,14 +166,11 @@ password protection is a paid feature.
       form confirmation both offer it as a WhatsApp number
 - [ ] Replace the placeholder social URLs in `src/content/site.ts`
 - [ ] Replace the testimonials in `src/content/home.ts` with real ones
-- [ ] Add the itinerary, meeting point and what's-included list for Canary
-      Wharf & Greenwich — the one tour still marked `detailsPending` in
-      `tours.ts`. Its price is set; only the detail is missing. Remove the flag
-      once it is in
 - [ ] Add a meeting point for the Westminster tour — it is the one walking tour
       without one, so its detail page omits that section
 - [ ] Wire up enquiry delivery (`.env.example`)
-- [ ] Have the Privacy Policy and Terms reviewed — both are placeholder wording
+- [ ] Replace the Terms & Conditions — still placeholder wording. (The Privacy
+      Policy is the client's own UK GDPR text, in `src/content/privacy.ts`.)
 - [ ] Set `SITE_INDEXABLE=true` on the production environment and redeploy, so
       the site can be indexed (it is deliberately noindex until then)
 - [ ] Serve the site from one canonical host. `site.url` is

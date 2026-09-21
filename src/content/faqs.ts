@@ -1,6 +1,8 @@
 import { site } from "@/content/site";
 
-export type Faq = { question: string; answer: string };
+/** An optional block under the lead paragraph: a sub-heading, a list, or both. */
+export type FaqBlock = { heading?: string; text?: string; list?: string[] };
+export type Faq = { question: string; answer: string; details?: FaqBlock[] };
 export type FaqGroup = { title: string; items: Faq[] };
 
 export const faqGroups: FaqGroup[] = [
@@ -60,6 +62,41 @@ export const faqGroups: FaqGroup[] = [
         question: "How will I find the guide at the meeting point?",
         answer:
           "Look for the red umbrella. Your guide will be waiting at the meeting point holding one, which is easy to spot whatever the weather is doing.",
+      },
+      {
+        question: "What should I bring and wear?",
+        answer:
+          "London weather can be unpredictable — you might start your tour in sunshine and finish with a little rain! Since our walking tours last around 2 hours and take place outdoors, we recommend coming prepared for the weather.",
+        details: [
+          {
+            heading: "On sunny or warm days",
+            list: [
+              "Wear comfortable, breathable clothing",
+              "Comfortable walking shoes are essential",
+              "Bring a water bottle to stay hydrated",
+              "Sunglasses, sunscreen and a hat are recommended, especially in summer",
+              "A light jacket or cardigan can be useful, as temperatures change during the day",
+            ],
+          },
+          {
+            heading: "On rainy or cooler days",
+            list: [
+              "Bring a waterproof jacket or raincoat and/or a small umbrella",
+              "Wear comfortable, water-resistant shoes if possible",
+              "Dress in layers so you can adjust easily",
+              "In colder months, bring a warm coat, scarf, gloves and hat",
+            ],
+          },
+          {
+            text: "Most importantly, please wear comfortable shoes — we will be walking and standing for approximately 2 hours, often on pavements and historic streets.",
+          },
+          {
+            text: "Our little London tip: even if the forecast looks dry, carrying a small umbrella or lightweight waterproof jacket is always a good idea. You never quite know what London has planned!",
+          },
+          {
+            text: "Please check the weather forecast on the day of your tour and dress accordingly. Our tours generally continue in light rain, so come prepared and enjoy exploring London with us!",
+          },
+        ],
       },
       {
         question: "What happens if it rains?",

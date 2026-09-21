@@ -38,7 +38,7 @@ export function SectionHeading({
             className={cn(
               "mb-4 text-xs font-semibold uppercase tracking-[0.18em]",
               tone === "dark" && "text-navy-200",
-              tone === "warm" && "text-clay-600",
+              tone === "warm" && "text-red-600",
               tone === "light" && "text-ink-muted",
             )}
           >
@@ -47,7 +47,7 @@ export function SectionHeading({
         )}
         <Heading
           className={cn(
-            "text-[2rem] leading-[1.12] sm:text-[2.5rem] lg:text-[2.875rem]",
+            "text-[2rem] leading-[1.12] sm:text-[2.5rem] lg:text-[2.875rem] font-bold",
             tone === "dark" && "text-white",
           )}
         >
@@ -57,14 +57,16 @@ export function SectionHeading({
           <p
             className={cn(
               "mt-5 text-lg leading-relaxed",
-              tone === "dark" ? "text-navy-100" : "text-ink-muted",
+              tone === "dark" ? "text-navy-100" : "text-black",
             )}
           >
             {intro}
           </p>
         )}
       </div>
-      {aside && <div className={cn("shrink-0", centered && "md:mt-2")}>{aside}</div>}
+      {aside && (
+        <div className={cn("shrink-0", centered && "md:mt-2")}>{aside}</div>
+      )}
     </div>
   );
 }

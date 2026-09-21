@@ -22,14 +22,15 @@ export function Hero() {
       )}
 
       {/* Scrims: keep the type readable without washing out the photograph.
-          A light overall wash, a top band for the transparent header, and a
-          stronger foot where the headline sits. The wash is deliberately
-          lighter than a pure navy scrim, and a clay layer over it warms the
-          photograph rather than draining it. */}
-      <div className="absolute inset-0 bg-navy-900/22" />
-      <div className="absolute inset-0 bg-linear-to-tr from-clay-500/30 via-clay-400/10 to-transparent" />
-      <div className="absolute inset-x-0 top-0 h-40 bg-linear-to-b from-navy-900/55 to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 h-3/4 bg-linear-to-t from-navy-900/85 via-navy-900/35 to-transparent" />
+          Kept as light as the contrast measurements allow — a faint overall
+          wash, a warm clay layer, a top band so the transparent header's white
+          nav has something to sit on, and a foot under the headline. Lighten
+          these further and the white type starts failing against the brightest
+          parts of the photograph. */}
+      <div className="absolute inset-0 bg-navy-900/10" />
+      <div className="absolute inset-0 bg-linear-to-tr from-clay-500/24 via-clay-400/8 to-transparent" />
+      <div className="absolute inset-x-0 top-0 h-40 bg-linear-to-b from-navy-900/64 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-3/4 bg-linear-to-t from-navy-900/74 via-navy-900/26 to-transparent" />
 
       <Container className="relative">
         <div className="max-w-3xl">

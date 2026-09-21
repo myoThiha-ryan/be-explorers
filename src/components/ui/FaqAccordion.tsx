@@ -22,9 +22,29 @@ export function FaqAccordion({ items, className }: Props) {
               className="mt-1 size-5 shrink-0 text-ink-muted transition-transform duration-300 group-open:-rotate-180"
             />
           </summary>
-          <p className="max-w-2xl pb-6 leading-relaxed text-ink-muted">
-            {item.answer}
-          </p>
+          <div className="max-w-2xl pb-6 leading-relaxed text-ink-muted">
+            <p>{item.answer}</p>
+            {item.details?.map((block) => (
+              <div key={block.heading ?? block.text} className="mt-5">
+                {block.heading && (
+                  <p className="font-medium text-navy-800">{block.heading}</p>
+                )}
+                {block.text && <p>{block.text}</p>}
+                {block.list && (
+                  <ul className="mt-2 space-y-1.5">
+                    {block.list.map((line) => (
+                      <li key={line} className="flex gap-2.5">
+                        <span aria-hidden="true" className="text-clay-400">
+                          &bull;
+                        </span>
+                        <span>{line}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
+          </div>
         </details>
       ))}
     </div>

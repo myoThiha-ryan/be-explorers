@@ -39,7 +39,11 @@ export type Tour = {
   /** Closing line of the introduction, set slightly larger */
   pullQuote?: string;
   highlightsTitle?: string;
-  highlights?: string[];
+  /**
+   * A plain line, or a named landmark with a sentence about it and the emoji
+   * the client chose for it. The detail page renders either shape.
+   */
+  highlights?: (string | { icon?: string; heading: string; body: string })[];
   meetingPoint?: string;
   endPoint?: string;
   /** How much walking the day involves, e.g. "Moderate walking" */
@@ -59,7 +63,7 @@ export const tourIncludes = {
   included: [
     "Your local guide for the whole tour",
     "A bottle of water",
-    "A small BeExplorers souvenir",
+    "A small souvenir",
   ],
   notIncluded: [
     "Transport and travel cards",
@@ -79,6 +83,14 @@ const londonPricing = {
   priceUnit: "per person" as const,
   priceNote:
     "Free for under-18s · special rates for families and companies booking privately",
+};
+
+/** Tours outside London, per the client's September note. */
+const dayTripPricing = {
+  priceFrom: 99,
+  priceUnit: "per person" as const,
+  priceNote:
+    "Private and group tours available — contact us for more details",
 };
 
 /** Shared by every £20-per-person walking tour. */
@@ -107,14 +119,57 @@ export const tours: Tour[] = [
     ],
     pullQuote:
       "Walk through the heart of London. Discover its stories. See it through the eyes of a local.",
-    highlightsTitle: "Why you'll love it",
     highlights: [
-      "See London's most iconic royal and political landmarks",
-      "Discover the history behind Westminster's famous streets and buildings",
-      "Hear fascinating stories, legends and royal connections",
-      "Explore with an experienced local guide",
-      "A relaxed walking experience with plenty of opportunities for photos",
+      {
+        icon: "🏛",
+        heading: "Palace of Westminster & Houses of Parliament",
+        body: "Discover the heart of British democracy and hear the stories behind one of London's most iconic landmarks.",
+      },
+      {
+        icon: "⛪",
+        heading: "Westminster Abbey",
+        body: "Admire this magnificent historic church and discover its centuries-old connection to British kings, queens and national events.",
+      },
+      {
+        icon: "🏠",
+        heading: "10 Downing Street",
+        body: "See the famous home and office of the British Prime Minister and learn about its place in modern British politics.",
+      },
+      {
+        icon: "⚪",
+        heading: "Whitehall",
+        body: "Walk along one of London's most historic streets, surrounded by government buildings, monuments and centuries of political history.",
+      },
+      {
+        icon: "🦁",
+        heading: "Trafalgar Square",
+        body: "Explore London's famous public square, dominated by Nelson's Column and surrounded by some of the city's most important landmarks.",
+      },
+      {
+        icon: "🌳",
+        heading: "St James's Park",
+        body: "Enjoy a beautiful walk through one of London's Royal Parks, right in the heart of Westminster.",
+      },
+      {
+        icon: "👑",
+        heading: "St James's Palace",
+        body: "Discover one of London's oldest royal palaces and its fascinating connection to the British monarchy.",
+      },
+      {
+        icon: "🛣",
+        heading: "The Mall",
+        body: "Walk along London's grand ceremonial avenue, connecting St James's Palace with Buckingham Palace.",
+      },
+      {
+        icon: "👑",
+        heading: "Buckingham Palace",
+        body: "Finish at the world-famous home of the British monarch and discover the royal stories surrounding the palace.",
+      },
     ],
+    meetingPoint:
+      "In front of Winston Churchill's statue in Parliament Square.",
+    endPoint:
+      "In front of Buckingham Palace, at the corner of The Mall and Constitution Hill.",
     image: images.bigBenBus,
     featured: true,
   },
@@ -136,14 +191,41 @@ export const tours: Tour[] = [
     pullQuote:
       "The tour finishes in front of St Paul's Cathedral, one of London's most magnificent and recognisable landmarks.",
     highlights: [
-      "Explore Tower Hill and discover the ancient history of the City",
-      "Hear the stories behind the Tower of London",
-      "Admire Tower Bridge from the outside",
-      "Discover the history of the Monument",
-      "Wander through the beautiful Leadenhall Market",
-      "Learn about London's financial power at the Bank of England",
-      "See the historic Royal Exchange",
-      "Finish at magnificent St Paul's Cathedral",
+      {
+        icon: "🏰",
+        heading: "Tower of London",
+        body: "Step into one of London's most famous historic fortresses and discover its royal, prison and dramatic history.",
+      },
+      {
+        icon: "🌉",
+        heading: "Tower Bridge",
+        body: "Admire London's iconic Victorian bridge and hear the fascinating stories behind its construction and famous design.",
+      },
+      {
+        icon: "🔥",
+        heading: "The Monument",
+        body: "See the towering memorial to the Great Fire of London and discover how the disaster transformed the City.",
+      },
+      {
+        icon: "🛍",
+        heading: "Leadenhall Market",
+        body: "Wander through one of London's most beautiful historic markets, with its stunning Victorian architecture and centuries of trading history.",
+      },
+      {
+        icon: "🏦",
+        heading: "Bank of England",
+        body: "Discover the fascinating history of Britain's central bank and its important role in London's financial district.",
+      },
+      {
+        icon: "🏛",
+        heading: "Royal Exchange",
+        body: "Explore the historic heart of London's financial world and learn how this grand building became a symbol of British commerce.",
+      },
+      {
+        icon: "⛪",
+        heading: "St Paul's Cathedral",
+        body: "Admire Sir Christopher Wren's magnificent masterpiece and discover its remarkable place in London's history.",
+      },
     ],
     meetingPoint:
       "Outside Tower Hill Underground station — look for your guide with a red umbrella.",
@@ -154,8 +236,8 @@ export const tours: Tour[] = [
   {
     ...walkingTour,
     slug: "notting-hill-uncovered",
-    title: "Notting Hill Uncovered",
-    subtitle: "Film, Colour & Culture",
+    title: "Film, Colour & Culture",
+    subtitle: "Notting Hill Uncovered",
     location: "Notting Hill, London",
     summary:
       "Colourful streets, Victorian villas, Portobello Market and the film locations that made the neighbourhood famous — finishing at the Blue Door.",
@@ -168,15 +250,51 @@ export const tours: Tour[] = [
     pullQuote:
       "The tour finishes at the famous Blue Door and the charming bookshops — the perfect place to explore, take photos and soak up the atmosphere.",
     highlights: [
-      "Discover Notting Hill's iconic colourful streets",
-      "Visit famous film locations",
-      "Admire beautiful Victorian villas and mews",
-      "Explore Portobello Road & Market",
-      "Discover Rosmead Gardens and other hidden corners",
-      "See the historic Electric Cinema",
-      "Visit Saint Luke's Mews and Lancaster Road",
-      "Finish at the famous Blue Door & bookshops",
-      "Hear fascinating stories about Notting Hill's history and culture",
+      {
+        icon: "🌈",
+        heading: "Portobello Road & Market",
+        body: "Explore one of London's most famous streets and discover its colourful market, antiques, vintage treasures and lively atmosphere.",
+      },
+      {
+        icon: "🛍",
+        heading: "Westbourne Grove",
+        body: "Stroll through one of Notting Hill's stylish streets, filled with beautiful architecture, independent shops and cafés.",
+      },
+      {
+        icon: "🌿",
+        heading: "Rosmead Gardens",
+        body: "Discover a peaceful hidden corner of Notting Hill surrounded by elegant Victorian houses and beautiful greenery.",
+      },
+      {
+        icon: "🎬",
+        heading: "Electric Cinema",
+        body: "See one of Britain's oldest working cinemas and discover its fascinating connection to the history of Notting Hill.",
+      },
+      {
+        icon: "🚪",
+        heading: "Notting Hill Film Locations",
+        body: "Visit the famous blue door, bookshop locations and other memorable spots from the beloved Notting Hill film.",
+      },
+      {
+        icon: "🏡",
+        heading: "St Luke's Mews",
+        body: "Wander through one of Notting Hill's prettiest streets, famous for its colourful houses and picture-perfect charm.",
+      },
+      {
+        icon: "🌸",
+        heading: "Lancaster Road",
+        body: "Admire the vibrant Victorian houses and colourful façades that make this one of London's most photogenic streets.",
+      },
+      {
+        icon: "🎓",
+        heading: "Wetherby School",
+        body: "Pass one of London's well-known independent schools and discover another side of Notting Hill's local history.",
+      },
+      {
+        icon: "🏘",
+        heading: "Victorian Notting Hill",
+        body: "Explore the beautiful Victorian streets and uncover the stories behind the neighbourhood's architecture, transformation and unique character.",
+      },
     ],
     meetingPoint:
       "In front of the KFH estate agents outside Exit 4 of Notting Hill Gate Underground station — look for your guide with a red umbrella.",
@@ -200,15 +318,32 @@ export const tours: Tour[] = [
       "Whether you're a lifelong Harry Potter fan or simply curious about the magical side of London, this relaxed walking tour offers a fun way to see the city through a different lens.",
     ],
     pullQuote: "Muggles are welcome too.",
-    highlightsTitle: "Tour highlights",
     highlights: [
-      "Start outside the Palace Theatre, home of Harry Potter and the Cursed Child",
-      "Explore The House of Spells",
-      "Walk along Charing Cross Road, famous for its bookshops and literary history",
-      "Discover Trafalgar Square and its connections to the wizarding world",
-      "Visit Great Scotland Yard",
-      "Enjoy plenty of opportunities for magical London photos",
-      "Hear fascinating stories about Harry Potter, London and the locations along the route",
+      {
+        icon: "🎭",
+        heading: "Palace Theatre",
+        body: "Start outside the iconic Palace Theatre, home to Harry Potter and the Cursed Child, and step into London's magical West End.",
+      },
+      {
+        icon: "🪄",
+        heading: "The House of Spells",
+        body: "Explore one of London's most magical shops, packed with wizarding-themed treasures and Harry Potter-inspired details.",
+      },
+      {
+        icon: "📚",
+        heading: "Charing Cross Road",
+        body: "Wander along London's famous bookshop street and discover its fascinating connections to literature, magic and wizarding London.",
+      },
+      {
+        icon: "🦁",
+        heading: "Trafalgar Square",
+        body: "See one of London's most famous landmarks and hear about its unexpected connections to the Harry Potter films.",
+      },
+      {
+        icon: "🕵",
+        heading: "Great Scotland Yard",
+        body: "Discover this historic London street and its connections to the wizarding world and famous Harry Potter filming locations.",
+      },
     ],
     meetingPoint:
       "Outside the Palace Theatre, London W1D — just around the corner from Leicester Square Underground station. Look for your guide with a red umbrella.",
@@ -216,22 +351,63 @@ export const tours: Tour[] = [
     image: images.palaceTheatre,
   },
   {
-    slug: "canary-wharf-and-greenwich",
-    title: "Canary Wharf & Greenwich",
-    subtitle: "Modern London & Maritime Heritage",
-    location: "Canary Wharf & Greenwich, London",
-    duration: "Half day",
-    groupType: "Small group · private tours on request",
-    ...londonPricing,
+    ...walkingTour,
+    slug: "greenwich-walking-tour",
+    title: "Cutty Sark, Royal History & Prime Meridian",
+    subtitle: "Greenwich Walking Tour",
+    location: "Greenwich, London",
     summary:
-      "Experience modern London alongside its fascinating maritime heritage — the towers of Canary Wharf and the historic charm of Greenwich.",
-    languages: ["en", "de", "my"],
-    categories: ["London", "Walking Tours", "Private Tours"],
+      "Royal history, maritime heritage, parkland and the Prime Meridian — the historic heart of Greenwich on foot, finishing at the market.",
     intro: [
-      "Two sides of the river and two sides of London: the glass towers of the Docklands, and the maritime town that measured the world.",
+      "Discover the historic heart of Greenwich on a relaxed 2-hour walking tour covering approximately 1.5 miles. Explore royal history, maritime heritage, beautiful parkland and the famous Prime Meridian while hearing fascinating stories about the people and events that shaped Greenwich and London.",
+      "Starting outside Cutty Sark DLR Station, we'll walk through the historic heart of Greenwich, taking in some of its most famous landmarks and fascinating sights.",
+      "Along the way, you'll discover the stories behind Greenwich's royal and maritime heritage, enjoy the beautiful surroundings of Greenwich Park and stand on the famous Prime Meridian Line, where the Eastern and Western Hemispheres meet.",
+      "We'll finish at Greenwich Market, giving you the perfect opportunity to explore the market, enjoy some food or continue discovering Greenwich independently.",
     ],
-    image: images.canaryWharf,
-    detailsPending: true,
+    highlights: [
+      {
+        icon: "⚓",
+        heading: "Cutty Sark",
+        body: "Discover the story of one of the world's most famous historic sailing ships.",
+      },
+      {
+        icon: "🏛",
+        heading: "Old Royal Naval College",
+        body: "Admire one of Greenwich's most impressive historic landmarks and learn about its royal and maritime connections.",
+      },
+      {
+        icon: "👑",
+        heading: "Queen's House",
+        body: "See the elegant former royal residence and hear about its fascinating connection to British royalty.",
+      },
+      {
+        icon: "🌳",
+        heading: "Greenwich Park",
+        body: "Walk through one of London's most beautiful Royal Parks and discover its royal history.",
+      },
+      {
+        icon: "🌍",
+        heading: "Prime Meridian Line",
+        body: "Visit the historic location that separates the Eastern and Western Hemispheres.",
+      },
+      {
+        icon: "⚓",
+        heading: "National Maritime Museum",
+        body: "Discover Greenwich's deep connection with Britain's maritime history.",
+      },
+      {
+        icon: "🛍",
+        heading: "Greenwich Market",
+        body: "Finish your tour at Greenwich Market, where you can continue exploring, shop for unique items or enjoy something to eat.",
+      },
+    ],
+    meetingPoint:
+      "Outside Cutty Sark DLR station, in front of McDonald's. Your guide, AK, will be waiting with a red umbrella.",
+    endPoint: "Greenwich Market.",
+    walking: "About 1.5 miles",
+    whoFor:
+      "Visitors who want to experience the highlights of Greenwich on foot with a knowledgeable local guide.",
+    image: images.greenwich,
   },
 
   /* ------------------------------------------------------------------
@@ -247,6 +423,7 @@ export const tours: Tour[] = [
     location: "Windsor, Stonehenge & Bath · from London",
     duration: "About 12 hours",
     groupType: "Private tour, just for you and the people you travel with",
+    ...dayTripPricing,
     summary:
       "Windsor Castle and St George's Chapel, the standing stones on Salisbury Plain, and Georgian Bath with entry to the Roman Baths — collected from your hotel and returned to it.",
     languages: ["en", "de", "my"],
@@ -255,9 +432,56 @@ export const tours: Tour[] = [
       "Three of England's great sights in a single day: the oldest and largest inhabited castle in the world, a stone circle raised 5,000 years ago, and a city built around a Roman spring.",
     ],
     highlights: [
-      "Windsor Castle, including St George's Chapel",
-      "Stonehenge, and the visitor centre on Salisbury Plain",
-      "Bath, with entrance to the Roman Baths",
+      {
+        icon: "👑",
+        heading: "Windsor Castle",
+        body: "Explore the world's oldest and largest inhabited castle and discover more than 900 years of royal history, from monarchs and royal weddings to the magnificent State Apartments and St George's Chapel.",
+      },
+      {
+        icon: "💂",
+        heading: "Changing of the Guard",
+        body: "Experience one of Britain's most famous royal traditions, with smartly dressed guards, military music and centuries of ceremony. (Selected days only.)",
+      },
+      {
+        icon: "🏰",
+        heading: "St George's Chapel",
+        body: "Visit the beautiful royal chapel where Prince Harry and Meghan Markle married and where Queen Elizabeth II is laid to rest.",
+      },
+      {
+        icon: "🪨",
+        heading: "Stonehenge",
+        body: "Stand before one of the world's most mysterious prehistoric monuments and discover the fascinating stories and theories surrounding its 5,000-year-old stones.",
+      },
+      {
+        icon: "🏠",
+        heading: "Neolithic Stonehenge",
+        body: "Step inside recreated Neolithic houses and imagine how the people who built Stonehenge may have lived thousands of years ago.",
+      },
+      {
+        icon: "🏛",
+        heading: "Roman Baths",
+        body: "Explore Bath's extraordinary ancient Roman Baths and discover how naturally heated thermal waters shaped the city's history.",
+      },
+      {
+        icon: "⛪",
+        heading: "Bath Abbey",
+        body: "Admire the magnificent Gothic architecture of Bath Abbey, standing at the heart of this beautiful historic city.",
+      },
+      {
+        icon: "🌿",
+        heading: "Royal Crescent",
+        body: "See one of Bath's most iconic landmarks and admire the elegant Georgian architecture that makes the city a UNESCO World Heritage Site.",
+      },
+      {
+        icon: "🌉",
+        heading: "Pulteney Bridge",
+        body: "Walk along one of Britain's most beautiful historic bridges and enjoy views across the River Avon.",
+      },
+      {
+        icon: "📚",
+        heading: "Jane Austen's Bath",
+        body: "Discover Bath's connection to Jane Austen and the Regency era as you explore the elegant streets that inspired her writing.",
+      },
     ],
     sections: [
       {
@@ -292,6 +516,7 @@ export const tours: Tour[] = [
     title: "England's Academic Heritage",
     subtitle: "Oxford & Cambridge",
     location: "Oxford & Cambridge · from London",
+    ...dayTripPricing,
     summary:
       "Christ Church College in Oxford, King's College and the Corpus Clock in Cambridge — both of England's ancient university cities in a single day, door to door from your hotel.",
     languages: ["en", "de", "my"],
@@ -300,9 +525,51 @@ export const tours: Tour[] = [
       "Two university cities that between them have taught much of the English-speaking world — walked with a guide, with entry to the colleges at the heart of both.",
     ],
     highlights: [
-      "Christ Church College, Oxford — a Harry Potter filming location",
-      "King's College, Cambridge, and the Corpus Clock",
-      "Guided walking tours of both cities",
+      {
+        icon: "🎓",
+        heading: "Cambridge University",
+        body: "Explore one of the world's most famous university cities and discover centuries of academic history, beautiful colleges and legendary scholars.",
+      },
+      {
+        icon: "🏛",
+        heading: "Senate House",
+        body: "Admire this impressive neoclassical landmark, traditionally associated with Cambridge University ceremonies and graduations.",
+      },
+      {
+        icon: "⏰",
+        heading: "Corpus Clock",
+        body: "See Cambridge's fascinating modern masterpiece — a unique mechanical clock with no traditional hands or numbers.",
+      },
+      {
+        icon: "👑",
+        heading: "King's College Chapel",
+        body: "Marvel at one of Cambridge's most spectacular landmarks, famous for its magnificent Gothic architecture, medieval stained glass and world-renowned choir.",
+      },
+      {
+        icon: "🎓",
+        heading: "Oxford University",
+        body: "Walk through the historic heart of the oldest university in the English-speaking world, surrounded by centuries of scholarship and the city's famous dreaming spires.",
+      },
+      {
+        icon: "📚",
+        heading: "Bodleian Library",
+        body: "Discover one of Europe's oldest libraries and one of Oxford's most iconic academic landmarks.",
+      },
+      {
+        icon: "🏛",
+        heading: "Christ Church College",
+        body: "Explore the grand college made famous by its royal connections, magnificent architecture and remarkable academic history.",
+      },
+      {
+        icon: "🪄",
+        heading: "Harry Potter at Christ Church",
+        body: "Step into the world of Hogwarts and discover the Great Hall and other locations that helped bring the Harry Potter films to life.",
+      },
+      {
+        icon: "🏰",
+        heading: "Oxford's Historic Streets",
+        body: "Wander through medieval lanes, historic squares and beautiful college courtyards while hearing fascinating stories from Oxford's past.",
+      },
     ],
     sections: [
       {

@@ -11,10 +11,10 @@ and delete this file.
 | `cambridge-punting.jpg` | Mike McBey | CC BY 2.0 | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Punts_on_the_River_Cam,_Cambridge_England_(26164190128).jpg) |
 | `cotswolds-bibury.jpg` | Mike McBey | CC BY 2.0 | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Arlington_Row,_Bibury,_England_(40401081723).jpg) |
 | `windsor-castle.jpg` | Thomas Duesing | CC BY 2.0 | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Windsor_Castle_Henry_VIII_Gateway.jpg) |
-| `notting-hill-colourful-houses.jpg` | Bex Walton | CC BY 2.0 | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Colourful_houses_in_Lancaster_Road,_Notting_Hill_-_2020-07-05.jpg) |
+| `notting-hill-travel-bookshop.jpg` | Nikos Roussos | CC BY-SA 2.0 | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:The_Travel_Bookshop,_Notting_Hill.jpg) |
 | `palace-theatre.jpg` | Matt May (upload: MrPanyGoff) | CC BY 2.0 | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Palace_Theatre_-_London.jpg) |
 | `stonehenge.jpg` | simonwakefield | CC BY 2.0 | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Stonehenge_(sun).jpg) |
-| `canary-wharf.jpg` | King of Hearts | CC BY-SA 4.0 | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Canary_Wharf_from_Limehouse_London_June_2016_HDR.jpg) |
+| `greenwich-park-view.jpg` | Roman Hobler | CC0 (no attribution required) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:View_across_Greenwich_Park_to_Canary_Wharf.jpg) |
 | `bath-roman-baths.jpg` | Diliff | CC BY 2.5 | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Roman_Baths_in_Bath_Spa,_England_-_July_2006_edit3.jpg) |
 
 `logo-mark.png` and `logo-full.png` are the client's own logo, cut out of the

@@ -74,23 +74,23 @@ export const languages: Language[] = [
 export const socials = [
   {
     label: "Instagram",
-    href: "https://instagram.com/beexplorers",
+    href: "https://www.instagram.com/beexplorerstravelandtours?stkn=dWd2OW9zMjl0dzFk",
     handle: "@beexplorers",
   },
   {
     label: "Facebook",
-    href: "https://facebook.com/beexplorers",
+    href: "https://www.facebook.com/share/1DSrmKhvVz/?mibextid=wwXIfr",
     handle: "/beexplorers",
   },
   {
     label: "TikTok",
-    href: "https://tiktok.com/@beexplorers",
+    href: "https://www.tiktok.com/@lwinmarakaymon?_r=1&_t=ZN-98huuiTOU4M",
     handle: "@beexplorers",
   },
   // The only confirmed account so far — the three above are still guesses.
   {
     label: "YouTube",
-    href: "https://youtube.com/@beexplorers",
+    href: "https://youtube.com/@beexplorers?si=q7mwtmzo8UVAZCUk",
     handle: "@beexplorers",
   },
 ] as const;

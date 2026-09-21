@@ -12,7 +12,12 @@ type Props = {
   showPrice?: boolean;
 };
 
-export function TourCard({ tour, priority, className, showPrice = true }: Props) {
+export function TourCard({
+  tour,
+  priority,
+  className,
+  showPrice = true,
+}: Props) {
   const href = `/tours/${tour.slug}`;
 
   return (
@@ -37,12 +42,12 @@ export function TourCard({ tour, priority, className, showPrice = true }: Props)
         {/* Fixed height so titles stay aligned across a row when one card's
             meta wraps to a second line. */}
         <div className="flex min-h-11 flex-wrap items-start gap-x-4 gap-y-1 text-sm text-ink-muted">
-          <span className="inline-flex items-center gap-1.5">
+          <span className="inline-flex items-center gap-1.5 text-red-600 font-bold">
             <Icon name="pin" className="size-4 shrink-0 text-clay-500" />
             {tour.location}
           </span>
           {tour.duration && (
-            <span className="inline-flex items-center gap-1.5 whitespace-nowrap">
+            <span className="inline-flex items-center gap-1.5 whitespace-nowrap text-red-600 font-bold">
               <Icon name="clock" className="size-4 shrink-0 text-clay-500" />
               {tour.duration}
             </span>
@@ -52,7 +57,7 @@ export function TourCard({ tour, priority, className, showPrice = true }: Props)
         <h3 className="text-2xl leading-snug">
           <Link
             href={href}
-            className="transition-colors hover:text-navy-600 focus-visible:text-navy-600"
+            className="transition-colors font-bold hover:text-navy-600 focus-visible:text-navy-600"
           >
             {tour.title}
           </Link>
@@ -61,9 +66,7 @@ export function TourCard({ tour, priority, className, showPrice = true }: Props)
         {/* The evocative name alone doesn't say which tour this is — the plain
             name keeps a grid of nine cards scannable. */}
         {tour.subtitle && (
-          <p className="mt-1.5 text-[0.9375rem] text-ink-muted">
-            {tour.subtitle}
-          </p>
+          <p className="mt-1.5 text-[0.9375rem] text-black">{tour.subtitle}</p>
         )}
 
         <p className="mt-3 leading-relaxed text-ink-muted">{tour.summary}</p>
@@ -85,7 +88,9 @@ export function TourCard({ tour, priority, className, showPrice = true }: Props)
             <p className="text-sm text-ink-muted">
               {tour.priceFrom ? (
                 <>
-                  <span className="font-medium text-ink">£{tour.priceFrom}</span>{" "}
+                  <span className="font-medium text-ink">
+                    £{tour.priceFrom}
+                  </span>{" "}
                   {tour.priceUnit}
                 </>
               ) : (

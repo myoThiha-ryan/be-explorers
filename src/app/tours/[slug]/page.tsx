@@ -125,19 +125,46 @@ export default async function TourDetailPage({
                     {tour.highlightsTitle ?? "What you’ll experience"}
                   </h2>
                   <ul className="mt-6 space-y-4">
-                    {tour.highlights.map((highlight) => (
-                      <li
-                        key={highlight}
-                        className="flex gap-3 leading-relaxed"
-                      >
-                        <Icon
-                          name="check"
-                          className="mt-1 size-4 shrink-0 text-navy-800"
-                          strokeWidth={2}
-                        />
-                        <span className="text-ink-muted">{highlight}</span>
-                      </li>
-                    ))}
+                    {tour.highlights.map((highlight) => {
+                      // A highlight is either a plain line or a named landmark
+                      // with a sentence about it.
+                      const named = typeof highlight !== "string";
+                      const heading = named ? highlight.heading : highlight;
+                      const icon = named ? highlight.icon : undefined;
+                      return (
+                        <li key={heading} className="flex gap-3 leading-relaxed">
+                          {icon ? (
+                            // Decorative: the heading beside it carries the meaning.
+                            <span
+                              aria-hidden="true"
+                              className="w-6 shrink-0 text-center text-lg leading-7"
+                            >
+                              {icon}
+                            </span>
+                          ) : (
+                            <Icon
+                              name="check"
+                              className="mt-1 size-4 shrink-0 text-navy-800"
+                              strokeWidth={2}
+                            />
+                          )}
+                          <span>
+                            <span
+                              className={
+                                named ? "font-medium text-ink" : "text-ink-muted"
+                              }
+                            >
+                              {heading}
+                            </span>
+                            {named && (
+                              <span className="mt-1 block text-ink-muted">
+                                {highlight.body}
+                              </span>
+                            )}
+                          </span>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </>
               )}
