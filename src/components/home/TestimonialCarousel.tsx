@@ -5,7 +5,15 @@ import { Icon } from "@/components/ui/Icon";
 import { TestimonialCard } from "@/components/ui/TestimonialCard";
 import { cn } from "@/lib/cn";
 
-type Testimonial = { quote: string; name: string; detail?: string };
+/** Above this many reviews, the dots give way to a counter. */
+const DOT_LIMIT = 8;
+
+type Testimonial = {
+  quote: string;
+  name: string;
+  detail?: string;
+  language?: string;
+};
 
 type Props = {
   items: Testimonial[];
@@ -76,7 +84,7 @@ export function TestimonialCarousel({ items }: Props) {
       >
         {items.map((item, i) => (
           <li
-            key={item.name}
+            key={item.quote}
             aria-roledescription="slide"
             aria-label={`${i + 1} of ${items.length}`}
             aria-hidden={i !== index}
@@ -95,24 +103,37 @@ export function TestimonialCarousel({ items }: Props) {
           flip
         />
 
-        <ul className="flex items-center gap-2.5">
-          {items.map((item, i) => (
-            <li key={item.name}>
-              <button
-                type="button"
-                onClick={() => goTo(i)}
-                aria-label={`Show review ${i + 1} of ${items.length}`}
-                aria-current={i === index}
-                className={cn(
-                  "block size-2.5 rounded-full transition-colors",
-                  i === index
-                    ? "bg-clay-500"
-                    : "bg-sand-200 hover:bg-clay-200",
-                )}
-              />
-            </li>
-          ))}
-        </ul>
+        {/* A dot per review stops being usable past a handful of them, so a
+            long list gets a counter instead — which doubles as a count of how
+            many reviews there are. */}
+        {items.length > DOT_LIMIT ? (
+          <p
+            aria-live="polite"
+            className="min-w-24 text-center text-sm tabular-nums text-ink-muted"
+          >
+            <span className="font-medium text-navy-800">{index + 1}</span> of{" "}
+            {items.length}
+          </p>
+        ) : (
+          <ul className="flex items-center gap-2.5">
+            {items.map((item, i) => (
+              <li key={item.quote}>
+                <button
+                  type="button"
+                  onClick={() => goTo(i)}
+                  aria-label={`Show review ${i + 1} of ${items.length}`}
+                  aria-current={i === index}
+                  className={cn(
+                    "block size-2.5 rounded-full transition-colors",
+                    i === index
+                      ? "bg-clay-500"
+                      : "bg-sand-200 hover:bg-clay-200",
+                  )}
+                />
+              </li>
+            ))}
+          </ul>
+        )}
 
         <CarouselButton
           label="Next review"

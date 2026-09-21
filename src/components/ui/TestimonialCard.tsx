@@ -4,10 +4,18 @@ type Props = {
   quote: string;
   name: string;
   detail?: string;
+  /** BCP-47 tag when the review is not in English, e.g. "de" */
+  language?: string;
   className?: string;
 };
 
-export function TestimonialCard({ quote, name, detail, className }: Props) {
+export function TestimonialCard({
+  quote,
+  name,
+  detail,
+  language,
+  className,
+}: Props) {
   return (
     <figure
       className={cn(
@@ -23,7 +31,10 @@ export function TestimonialCard({ quote, name, detail, className }: Props) {
         >
           &ldquo;
         </span>
-        <blockquote className="mt-3 text-lg leading-relaxed text-navy-800">
+        <blockquote
+          lang={language}
+          className="mt-3 text-lg leading-relaxed text-navy-800"
+        >
           {quote}
         </blockquote>
       </div>

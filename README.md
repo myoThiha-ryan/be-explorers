@@ -165,7 +165,6 @@ password protection is a paid feature.
 - [ ] Confirm `+44 7852 583872` is reachable on WhatsApp — the contact page and
       form confirmation both offer it as a WhatsApp number
 - [ ] Replace the placeholder social URLs in `src/content/site.ts`
-- [ ] Replace the testimonials in `src/content/home.ts` with real ones
 - [ ] Add a meeting point for the Westminster tour — it is the one walking tour
       without one, so its detail page omits that section
 - [ ] Wire up enquiry delivery (`.env.example`)
