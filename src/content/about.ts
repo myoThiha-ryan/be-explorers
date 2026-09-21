@@ -70,6 +70,28 @@ export const gallery = {
   heading: "On tour with AK",
   intro:
     "Real groups, real mornings in London — no two tours are quite the same.",
-  portraits: [images.akPhoneBox, images.akBuckinghamPalace, images.akGroupSteps],
+  /** Six fills two clean rows of three above the wide shot of The Mall. */
+  portraits: [
+    images.akBlueDoor,
+    images.akWhitehall,
+    images.akPhoneBox,
+    images.akBuckinghamPalace,
+    images.akGroupSteps,
+    images.akSouvenirKeyrings,
+  ],
   wide: images.akTheMall,
+};
+
+/**
+ * Sits with the timeline rather than the tour gallery: these are from the 2019
+ * Wanderlust World Guide Awards, which the timeline already lists, so the
+ * photographs make that line concrete instead of being stray snapshots.
+ */
+export const awards = {
+  caption: "The Wanderlust World Guide Awards, London, 2019.",
+  photos: [
+    images.akWanderlustAwards,
+    images.akWanderlustReception,
+    images.wanderlustStage,
+  ],
 };

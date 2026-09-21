@@ -21,7 +21,8 @@ and delete this file.
 supplied JPEG (white paper removed, no redrawing). `src/app/icon.png` is the
 same emblem, in white on navy, used as the favicon.
 
-`guide-portrait.jpg` and the `ak-*.jpg` tour photographs are **not**
+`guide-portrait.jpg`, the `ak-*.jpg` photographs and
+`wanderlust-awards-stage.jpg` are **not**
 placeholders — they were supplied by the client and need no attribution. They
 do show identifiable guests, so confirm the client has their permission to
 publish before the site goes live.

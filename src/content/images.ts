@@ -81,6 +81,44 @@ export const images = {
     src: "/images/ak-parliament-square.jpg",
     alt: "The BeExplorers guide with her red umbrella outside Westminster Abbey",
   },
+  akChurchillStatue: {
+    src: "/images/ak-churchill-statue.jpg",
+    alt: "A BeExplorers guide talking to a family group beside the Churchill statue in Parliament Square",
+  },
+  akBuckinghamRain: {
+    src: "/images/ak-buckingham-rain.jpg",
+    alt: "A BeExplorers group in front of Buckingham Palace on a rainy morning",
+  },
+  akSouvenirKeyrings: {
+    src: "/images/ak-souvenir-keyrings.jpg",
+    alt: "Three guests holding up their BeExplorers keyring souvenirs outside Buckingham Palace",
+  },
+  akBuckinghamThree: {
+    src: "/images/ak-buckingham-three.jpg",
+    alt: "Two guests with their guide beside the flowerbeds in front of Buckingham Palace",
+  },
+  akWhitehall: {
+    src: "/images/ak-whitehall.jpg",
+    alt: "The BeExplorers guide explaining the government buildings on King Charles Street to a guest",
+  },
+  akBlueDoor: {
+    src: "/images/ak-blue-door.jpg",
+    alt: "The BeExplorers guide at the blue door in Notting Hill made famous by the film",
+  },
+
+  /* The Wanderlust World Guide Awards, London, 2019 — supplied by the client. */
+  akWanderlustReception: {
+    src: "/images/ak-wanderlust-reception.jpg",
+    alt: "The BeExplorers guide with other guides at the Wanderlust World Guide Awards reception",
+  },
+  akWanderlustAwards: {
+    src: "/images/ak-wanderlust-awards.jpg",
+    alt: "The BeExplorers guide with fellow guides in front of the Wanderlust World Guide Awards 2019 backdrop",
+  },
+  wanderlustStage: {
+    src: "/images/wanderlust-awards-stage.jpg",
+    alt: "Lyn Hughes and Simon Calder on stage at the Wanderlust World Guide Awards 2019",
+  },
 
   nottingHill: {
     src: "/images/notting-hill-travel-bookshop.jpg",

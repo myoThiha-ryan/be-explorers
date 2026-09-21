@@ -6,7 +6,7 @@ import { GuidePortrait } from "@/components/ui/GuidePortrait";
 import { Icon } from "@/components/ui/Icon";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { gallery, guide, story, timeline } from "@/content/about";
+import { awards, gallery, guide, story, timeline } from "@/content/about";
 import { benefits } from "@/content/home";
 import { site } from "@/content/site";
 
@@ -93,6 +93,24 @@ export default function AboutPage() {
               </li>
             ))}
           </ol>
+
+          <ul className="mt-12 grid gap-4 sm:grid-cols-3">
+            {awards.photos.map((photo) => (
+              <li
+                key={photo.src}
+                className="relative aspect-video overflow-hidden rounded-xl bg-white"
+              >
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  sizes="(min-width: 640px) 240px, 100vw"
+                  className="object-cover"
+                />
+              </li>
+            ))}
+          </ul>
+          <p className="mt-4 text-sm text-ink-muted">{awards.caption}</p>
         </Container>
       </section>
 

@@ -451,13 +451,22 @@ export const closingCta = {
 };
 
 /**
- * Real tour photography from the client, replacing the stock London shots.
- * `images.akParliamentSquare` is deliberately left out: it is near-identical
- * to the guide portrait higher up the same page.
+ * Real tour photography from the client. Eight fills two clean rows of four on
+ * desktop and four rows of two on mobile.
+ *
+ * Ordered so the four shots taken in front of Buckingham Palace never land
+ * next to each other — the backdrop is identical in all of them.
+ *
+ * `images.akParliamentSquare` is deliberately left out: it is near-identical to
+ * the guide portrait higher up the same page.
  */
 export const socialGrid = [
-  images.akPhoneBox,
+  images.akChurchillStatue,
   images.akBuckinghamPalace,
+  images.akPhoneBox,
+  images.akBuckinghamRain,
   images.akTheMall,
+  images.akSouvenirKeyrings,
   images.akGroupSteps,
+  images.akBuckinghamThree,
 ];
