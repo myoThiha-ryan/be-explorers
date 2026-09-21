@@ -21,7 +21,7 @@ export function WhyBeExplorers() {
                 <Icon name={benefit.icon} className="size-6" />
               </span>
               <h3 className="mt-5 text-xl">{benefit.title}</h3>
-              <p className="mt-2.5 leading-relaxed text-ink-muted">
+              <p className="mt-2.5 leading-relaxed text-black">
                 {benefit.body}
               </p>
             </li>

@@ -20,7 +20,7 @@ export function HowItWorks() {
                 {step.step}
               </span>
               <h3 className="mt-4 text-xl">{step.title}</h3>
-              <p className="mt-2.5 leading-relaxed text-ink-muted">{step.body}</p>
+              <p className="mt-2.5 leading-relaxed text-black">{step.body}</p>
             </li>
           ))}
         </ol>

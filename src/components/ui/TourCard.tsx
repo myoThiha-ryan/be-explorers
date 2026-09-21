@@ -69,7 +69,7 @@ export function TourCard({
           <p className="mt-1.5 text-[0.9375rem] text-black">{tour.subtitle}</p>
         )}
 
-        <p className="mt-3 leading-relaxed text-ink-muted">{tour.summary}</p>
+        <p className="mt-3 leading-relaxed text-black">{tour.summary}</p>
 
         <LanguageTags codes={tour.languages} className="mt-5" />
 

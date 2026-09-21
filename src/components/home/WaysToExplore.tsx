@@ -29,9 +29,7 @@ export function WaysToExplore() {
                   {offer.title}
                 </Link>
               </h3>
-              <p className="mt-2.5 leading-relaxed text-ink-muted">
-                {offer.body}
-              </p>
+              <p className="mt-2.5 leading-relaxed text-black">{offer.body}</p>
             </li>
           ))}
         </ul>

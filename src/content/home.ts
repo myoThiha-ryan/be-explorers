@@ -88,7 +88,7 @@ export const benefits: Benefit[] = [
   {
     // Written in Latin script: the display serif has no Myanmar glyphs, and the
     // native spelling appears in the Languages section instead.
-    title: "English · Myanmar · German",
+    title: "English · Burmese · German",
     body: "Our tours are available in three languages, welcoming travellers from around the world.",
     icon: "globe",
   },
@@ -185,8 +185,7 @@ export const testimonials = [
     name: "Olga",
   },
   {
-    quote:
-      "Very good and entertaining tour, we really enjoyed it!",
+    quote: "Very good and entertaining tour, we really enjoyed it!",
     name: "Klopfer",
   },
   {
@@ -211,8 +210,7 @@ export const testimonials = [
     name: "Klaudia",
   },
   {
-    quote:
-      "Great tour. Thanks a lot dear A Kay, it was fun and we saw a lot.",
+    quote: "Great tour. Thanks a lot dear A Kay, it was fun and we saw a lot.",
     name: "Liane",
   },
   {
@@ -252,8 +250,7 @@ export const testimonials = [
     language: "de",
   },
   {
-    quote:
-      "Nice tour. There was plenty of time for questions and answers.",
+    quote: "Nice tour. There was plenty of time for questions and answers.",
     name: "Laura",
   },
   {
@@ -357,8 +354,7 @@ export const testimonials = [
     name: "Swantje",
   },
   {
-    quote:
-      "Thanks for the friendly and warm welcome to London!",
+    quote: "Thanks for the friendly and warm welcome to London!",
     name: "Eva",
   },
   {

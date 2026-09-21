@@ -28,7 +28,7 @@ export function AboutGuide() {
             <h2 className="text-[2rem] leading-[1.12] sm:text-[2.5rem]">
               {aboutGuide.heading}
             </h2>
-            <div className="mt-6 space-y-5 text-lg leading-relaxed text-ink-muted">
+            <div className="mt-6 space-y-5 text-lg leading-relaxed text-black">
               {aboutGuide.body.map((paragraph) => (
                 <p key={paragraph.slice(0, 24)}>{paragraph}</p>
               ))}
