@@ -22,6 +22,7 @@ npm run lint
 src/
   app/                 routes — one folder per page
     api/enquiry/       enquiry form endpoint
+    blog/[slug]/       blog articles, generated from the blog data
     tours/[slug]/      tour detail pages, generated from the tour data
   components/
     layout/            Header, Footer, Logo
@@ -41,6 +42,8 @@ and social links can all be changed without touching a component:
 | `tours.ts` | Every tour — the tours page, homepage cards and detail pages all read from it |
 | `home.ts` | Homepage section copy: hero, benefits, destinations, steps, testimonials |
 | `faqs.ts` | FAQ groups, used on the FAQs page and as teasers elsewhere |
+| `blog.ts` | The blog articles — the index and each article page read from it |
+| `privacy.ts` | The client's UK GDPR privacy policy |
 | `images.ts` | Every image on the site, in one registry |
 
 Adding a tour to `tours.ts` gives you a card on `/tours`, a detail page at
@@ -165,8 +168,10 @@ password protection is a paid feature.
 - [ ] Confirm `+44 7852 583872` is reachable on WhatsApp — the contact page and
       form confirmation both offer it as a WhatsApp number
 - [ ] Replace the placeholder social URLs in `src/content/site.ts`
-- [ ] Add a meeting point for the Westminster tour — it is the one walking tour
-      without one, so its detail page omits that section
+- [ ] Two blog articles promise ten items and list nine — "Here are 10 things
+      worth knowing" in `first-time-visitor-guide`, and the title and intro of
+      `hidden-london-stories`. Ask the client for the missing item in each, or
+      change the number (`src/content/blog.ts`)
 - [ ] Wire up enquiry delivery (`.env.example`)
 - [ ] Replace the Terms & Conditions — still placeholder wording. (The Privacy
       Policy is the client's own UK GDPR text, in `src/content/privacy.ts`.)
@@ -179,5 +184,5 @@ password protection is a paid feature.
 
 ## Not built yet
 
-Blog, tour filtering on `/tours`, and translated content. The tour data model
-and components are ready for all three.
+Tour filtering on `/tours`, and translated content. The data model and
+components are ready for both.
