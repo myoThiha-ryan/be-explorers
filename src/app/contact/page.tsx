@@ -36,8 +36,13 @@ export default function ContactPage() {
                     href={`mailto:${site.email}`}
                   />
                   <ContactRow
+                    icon="phone"
+                    label={site.phone}
+                    href={`tel:${site.phone.replace(/\s/g, "")}`}
+                  />
+                  <ContactRow
                     icon="whatsapp"
-                    label={`WhatsApp ${site.whatsapp}`}
+                    label="WhatsApp"
                     href={site.whatsappUrl}
                     external
                   />

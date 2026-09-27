@@ -55,7 +55,9 @@ export default async function TourDetailPage({
       icon: "globe" as const,
       label: "Price",
       value: tour.priceFrom
-        ? `£${tour.priceFrom} ${tour.priceUnit}`
+        ? [tour.pricePrefix, `£${tour.priceFrom}`, tour.priceUnit]
+            .filter(Boolean)
+            .join(" ")
         : "On enquiry",
     },
   ];
@@ -132,7 +134,10 @@ export default async function TourDetailPage({
                       const heading = named ? highlight.heading : highlight;
                       const icon = named ? highlight.icon : undefined;
                       return (
-                        <li key={heading} className="flex gap-3 leading-relaxed">
+                        <li
+                          key={heading}
+                          className="flex gap-3 leading-relaxed"
+                        >
                           {icon ? (
                             // Decorative: the heading beside it carries the meaning.
                             <span
@@ -151,7 +156,9 @@ export default async function TourDetailPage({
                           <span>
                             <span
                               className={
-                                named ? "font-medium text-ink" : "text-ink-muted"
+                                named
+                                  ? "font-medium text-ink"
+                                  : "text-ink-muted"
                               }
                             >
                               {heading}
@@ -183,8 +190,10 @@ export default async function TourDetailPage({
               {tour.detailsPending ? (
                 <div className="mt-14 rounded-2xl border border-line bg-mist p-6 leading-relaxed text-ink-muted">
                   Full details for this tour — the itinerary, meeting point
-                  {tour.priceFrom ? " and what is included" : ", what is included and the price"} —
-                  are being finalised. Send an enquiry with your dates and we
+                  {tour.priceFrom
+                    ? " and what is included"
+                    : ", what is included and the price"}{" "}
+                  — are being finalised. Send an enquiry with your dates and we
                   will send everything through.
                 </div>
               ) : (
@@ -268,7 +277,20 @@ export default async function TourDetailPage({
                   Price
                 </p>
                 <p className="mt-2 font-display text-4xl text-navy-800">
-                  {tour.priceFrom ? `£${tour.priceFrom}` : "On enquiry"}
+                  {tour.priceFrom ? (
+                    <>
+                      {/* Set above the amount rather than inline: at 4xl the
+                          qualifier would dwarf the number it qualifies. */}
+                      {tour.pricePrefix && (
+                        <span className="block font-sans text-base font-normal text-ink-muted">
+                          {tour.pricePrefix}
+                        </span>
+                      )}
+                      £{tour.priceFrom}
+                    </>
+                  ) : (
+                    "On enquiry"
+                  )}
                 </p>
                 {tour.priceFrom ? (
                   <>
@@ -290,8 +312,10 @@ export default async function TourDetailPage({
                   Enquire About This Tour
                 </Button>
                 <p className="mt-4 text-sm leading-relaxed text-ink-muted">
-                  No payment is taken online. We confirm availability first,
-                  then send the details.
+                  We accept payments via online payment link or bank transfer.
+                  For online payments, we will send you a secure payment link.
+                  Payment by telephone is not accepted. Please contact us if you
+                  require a payment link or bank transfer details.
                 </p>
               </div>
             </aside>

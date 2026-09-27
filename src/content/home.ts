@@ -4,7 +4,7 @@ import { site } from "@/content/site";
 export const hero = {
   headline: "Discover London Through a Local Perspective",
   supporting:
-    "Walking tours and day trips across London and beyond, guided in English, Myanmar and German.",
+    "Walking tours and day trips across London and beyond, guided in English, Burmese and German.",
   primaryCta: { label: "Explore Tours", href: "/tours" },
   secondaryCta: { label: "Plan Your Tour", href: "/contact" },
   /** Always shown: the LCP element, and the fallback whenever the video is not playing. */
@@ -148,7 +148,7 @@ export const howItWorks = [
   {
     step: "02",
     title: "Send an Enquiry",
-    body: "Tell us your preferred date, group size and language.",
+    body: "Tell us your preferred date, group size, tour type (private or to join with other individual bookers as group tours) and languages.",
   },
   {
     step: "03",
@@ -450,19 +450,21 @@ export const closingCta = {
  * Real tour photography from the client. Eight fills two clean rows of four on
  * desktop and four rows of two on mobile.
  *
- * Ordered so the four shots taken in front of Buckingham Palace never land
- * next to each other — the backdrop is identical in all of them.
+ * Ordered so the shots taken in front of Buckingham Palace never land next to
+ * each other — the backdrop is identical in all of them. The keyring photo is
+ * not here: it is the hero at the top of this same page.
  *
  * `images.akParliamentSquare` is deliberately left out: it is near-identical to
- * the guide portrait higher up the same page.
+ * the guide portrait higher up the same page. The phone box shot is out too —
+ * it is the Westminster card in the featured tours above.
  */
 export const socialGrid = [
   images.akChurchillStatue,
   images.akBuckinghamPalace,
-  images.akPhoneBox,
+  images.akWhitehall,
   images.akBuckinghamRain,
   images.akTheMall,
-  images.akSouvenirKeyrings,
+  images.akBlueDoor,
   images.akGroupSteps,
   images.akBuckinghamThree,
 ];

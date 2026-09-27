@@ -64,10 +64,10 @@ export const languages: Language[] = [
   },
   {
     code: "my",
-    native: "မြန်မာ",
+    native: "Burmese",
     english: "Burmese (Myanmar)",
     blurb:
-      "Tours in Myanmar for travellers and families visiting London from around the world.",
+      "Tours in Burmese for travellers and families visiting London from around the world.",
     script: "myanmar",
   },
 ];

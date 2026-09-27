@@ -14,9 +14,10 @@ const unsplash = (id: string, w = 1600) =>
 export type SiteImage = { src: string; alt: string };
 
 export const images = {
+  /* Client photograph, cropped to 16:9 from `ak-souvenir-keyrings.jpg`. */
   heroLondon: {
-    src: unsplash("1513635269975-59663e0ac1ad", 2400),
-    alt: "Aerial view of the River Thames at dusk with Tower Bridge and the City of London skyline",
+    src: "/images/hero-buckingham-group.jpg",
+    alt: "Three BeExplorers guests holding up their keyring souvenirs in front of Buckingham Palace",
   },
   westminster: {
     src: unsplash("1486299267070-83823f5448dd"),
@@ -101,6 +102,24 @@ export const images = {
     src: "/images/ak-whitehall.jpg",
     alt: "The BeExplorers guide explaining the government buildings on King Charles Street to a guest",
   },
+  /* Client photographs used as tour cards. All 4:3, the shape `TourCard` asks
+     for, so the card crops nothing further. */
+  nottingHillBookshop: {
+    src: "/images/ak-notting-hill-bookshop.jpg",
+    alt: "The BeExplorers guide reading on the bench outside The Notting Hill Bookshop's blue shopfront",
+  },
+  greenwichCuttySark: {
+    src: "/images/ak-cutty-sark.jpg",
+    alt: "The BeExplorers guide in front of the Cutty Sark clipper ship in Greenwich",
+  },
+  cityTowerOfLondon: {
+    src: "/images/ak-tower-of-london.jpg",
+    alt: "The BeExplorers guide at the entrance to the Tower of London, with the fortress walls behind",
+  },
+  westminsterPhoneBoxGroup: {
+    src: "/images/westminster-phone-box-group.jpg",
+    alt: "A BeExplorers group outside a red telephone box by Westminster station, with the Underground roundel and Westminster Abbey behind",
+  },
   akBlueDoor: {
     src: "/images/ak-blue-door.jpg",
     alt: "The BeExplorers guide at the blue door in Notting Hill made famous by the film",
@@ -120,17 +139,9 @@ export const images = {
     alt: "Lyn Hughes and Simon Calder on stage at the Wanderlust World Guide Awards 2019",
   },
 
-  nottingHill: {
-    src: "/images/notting-hill-travel-bookshop.jpg",
-    alt: "The blue and terracotta shopfront of The Travel Bookshop on Blenheim Crescent, Notting Hill",
-  },
   palaceTheatre: {
     src: "/images/palace-theatre.jpg",
     alt: "The Palace Theatre in London's West End, home of Harry Potter and the Cursed Child",
-  },
-  greenwich: {
-    src: "/images/greenwich-park-view.jpg",
-    alt: "The view from Greenwich Park over the Queen's House and the Old Royal Naval College, with Canary Wharf beyond",
   },
   stonehenge: {
     src: "/images/stonehenge.jpg",

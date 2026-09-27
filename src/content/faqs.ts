@@ -120,7 +120,7 @@ export const faqGroups: FaqGroup[] = [
       {
         question: "What languages are your tours available in?",
         answer:
-          "Our tours are available in English, Myanmar and German, making our experiences accessible to travellers from different countries and backgrounds.",
+          "Our tours are available in English, Burmese and German, making our experiences accessible to travellers from different countries and backgrounds.",
       },
       {
         question: "Can I request a specific language?",

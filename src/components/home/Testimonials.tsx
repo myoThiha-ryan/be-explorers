@@ -12,7 +12,7 @@ export function Testimonials() {
           eyebrow="Guest stories"
           tone="warm"
           title="What travellers say"
-          intro={`${testimonials.length} reviews from guests who have walked with ${site.guide}.`}
+          intro={`Reviews from guests who have walked with ${site.guide}.`}
         />
 
         <TestimonialCarousel items={testimonials} />

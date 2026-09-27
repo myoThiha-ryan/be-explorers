@@ -6,6 +6,9 @@ import { languages, legalNav, mainNav, site, socials } from "@/content/site";
 
 const footerNav = mainNav.filter((item) => item.href !== "/");
 
+/** `tel:` will not accept the spaces the number is displayed with. */
+const telHref = `tel:${site.phone.replace(/\s/g, "")}`;
+
 export function Footer() {
   return (
     <footer id="site-footer" className="border-t border-line bg-white">
@@ -16,13 +19,25 @@ export function Footer() {
             <p className="mt-5 max-w-xs leading-relaxed text-ink-muted">
               {site.tagline}
             </p>
-            <a
-              href={`mailto:${site.email}`}
-              className="mt-5 inline-flex items-center gap-2 text-[0.9375rem] text-navy-800 underline-offset-4 hover:underline"
-            >
-              <Icon name="mail" className="size-4" />
-              {site.email}
-            </a>
+            {/* One stacked block rather than three separate `mt-5` anchors, so
+                the rows sit on an even rhythm however long each label is. */}
+            <ul className="mt-5 space-y-3 text-[0.9375rem]">
+              <li>
+                <ContactLink href={`mailto:${site.email}`} icon="mail">
+                  {site.email}
+                </ContactLink>
+              </li>
+              <li>
+                <ContactLink href={telHref} icon="phone">
+                  {site.phone}
+                </ContactLink>
+              </li>
+              <li>
+                <ContactLink href={site.whatsappUrl} icon="whatsapp" external>
+                  WhatsApp
+                </ContactLink>
+              </li>
+            </ul>
           </div>
 
           <FooterColumn title="Explore">
@@ -88,6 +103,29 @@ export function Footer() {
         </div>
       </Container>
     </footer>
+  );
+}
+
+function ContactLink({
+  href,
+  icon,
+  external,
+  children,
+}: {
+  href: string;
+  icon: IconName;
+  external?: boolean;
+  children: React.ReactNode;
+}) {
+  return (
+    <a
+      href={href}
+      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+      className="inline-flex items-center gap-2 text-navy-800 underline-offset-4 hover:underline"
+    >
+      <Icon name={icon} className="size-4" />
+      {children}
+    </a>
   );
 }
 

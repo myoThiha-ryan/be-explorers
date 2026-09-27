@@ -27,10 +27,16 @@ export function Hero() {
           nav has something to sit on, and a foot under the headline. Lighten
           these further and the white type starts failing against the brightest
           parts of the photograph. */}
-      <div className="absolute inset-0 bg-navy-900/10" />
-      <div className="absolute inset-0 bg-linear-to-tr from-clay-500/24 via-clay-400/8 to-transparent" />
-      <div className="absolute inset-x-0 top-0 h-40 bg-linear-to-b from-navy-900/64 to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 h-3/4 bg-linear-to-t from-navy-900/74 via-navy-900/26 to-transparent" />
+      <div className="absolute inset-0 bg-navy-900/12" />
+      <div className="absolute inset-0 bg-linear-to-tr from-clay-500/22 via-clay-400/8 to-transparent" />
+      {/* The group stands dead centre, so the copy would otherwise run across
+          them. This shades the left third into a panel the type can sit on. */}
+      <div className="absolute inset-0 bg-linear-to-r from-navy-900/70 via-navy-900/25 to-transparent" />
+      <div className="absolute inset-x-0 top-0 h-40 bg-linear-to-b from-navy-900/60 to-transparent" />
+      {/* Full height on phones: the hero is much taller than it is wide there,
+          so the headline sits high in the frame where a three-quarter gradient
+          has barely ramped up. */}
+      <div className="absolute inset-x-0 bottom-0 h-full bg-linear-to-t from-navy-900/80 via-navy-900/40 to-transparent md:h-3/4" />
 
       <Container className="relative">
         <div className="max-w-3xl">

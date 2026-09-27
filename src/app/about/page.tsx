@@ -12,7 +12,7 @@ import { site } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "About Us",
-  description: `${site.name} is ${site.guide} — a London guide with over a decade in the travel industry, leading walking tours and day trips in English, Myanmar and German.`,
+  description: `${site.name} is ${site.guide} — a London guide with over a decade in the travel industry, leading walking tours and day trips in English, Burmese and German.`,
 };
 
 export default function AboutPage() {
@@ -152,7 +152,9 @@ export default function AboutPage() {
           <div className="space-y-14">
             {story.map((item) => (
               <div key={item.heading}>
-                <h2 className="text-[1.75rem] sm:text-[2rem]">{item.heading}</h2>
+                <h2 className="text-[1.75rem] sm:text-[2rem]">
+                  {item.heading}
+                </h2>
                 <p className="mt-5 text-lg leading-relaxed text-ink-muted">
                   {item.body}
                 </p>

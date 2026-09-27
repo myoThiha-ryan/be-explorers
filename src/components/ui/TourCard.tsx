@@ -76,7 +76,7 @@ export function TourCard({
         <div className="mt-6 flex items-center justify-between gap-4 border-t border-line pt-5 sm:mt-auto">
           <Link
             href={href}
-            className="inline-flex items-center gap-2 text-[0.9375rem] font-medium text-navy-800 transition-colors hover:text-navy-600"
+            className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap text-[0.9375rem] font-medium text-navy-800 transition-colors hover:text-navy-600"
           >
             View Tour
             <Icon
@@ -85,9 +85,12 @@ export function TourCard({
             />
           </Link>
           {showPrice && (
-            <p className="text-sm text-ink-muted">
+            // The price is the part that gives when the column is narrow, so it
+            // is the part allowed to wrap — right-aligned so it stays a block.
+            <p className="text-right text-sm text-ink-muted">
               {tour.priceFrom ? (
                 <>
+                  {tour.pricePrefix ? `${tour.pricePrefix} ` : ""}
                   <span className="font-medium text-ink">
                     £{tour.priceFrom}
                   </span>{" "}

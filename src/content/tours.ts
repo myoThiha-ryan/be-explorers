@@ -23,9 +23,15 @@ export type Tour = {
   /** Optional: some tours have no confirmed running time yet */
   duration?: string;
   groupType?: string;
-  /** Shown as "from £X" — omit to show "Price on enquiry" */
+  /** The headline amount — omit to show "Price on enquiry" */
   priceFrom?: number;
   priceUnit?: "per group" | "per person";
+  /**
+   * Set before the amount, e.g. "Starting from". Omit where the price is flat.
+   * Kept separate from `priceNote` because this qualifies the number itself,
+   * while the note qualifies who pays it.
+   */
+  pricePrefix?: string;
   /** Qualifies the headline price: concessions and private rates */
   priceNote?: string;
   summary: string;
@@ -81,16 +87,17 @@ export const tourIncludes = {
 const londonPricing = {
   priceFrom: 20,
   priceUnit: "per person" as const,
+  pricePrefix: "Starting from",
   priceNote:
     "Free for under-18s · special rates for families and companies booking privately",
 };
 
 /** Tours outside London, per the client's September note. */
 const dayTripPricing = {
-  priceFrom: 99,
+  priceFrom: 90,
   priceUnit: "per person" as const,
-  priceNote:
-    "Private and group tours available — contact us for more details",
+  pricePrefix: "Starting from",
+  priceNote: "Private and group tours available — contact us for more details",
 };
 
 /** Shared by every £20-per-person walking tour. */
@@ -167,10 +174,10 @@ export const tours: Tour[] = [
       },
     ],
     meetingPoint:
-      "In front of Winston Churchill's statue in Parliament Square.",
+      "In front of Winston Churchill's statue in Parliament Square — look for your guide, AK, with a red umbrella.",
     endPoint:
       "In front of Buckingham Palace, at the corner of The Mall and Constitution Hill.",
-    image: images.bigBenBus,
+    image: images.westminsterPhoneBoxGroup,
     featured: true,
   },
   {
@@ -228,9 +235,9 @@ export const tours: Tour[] = [
       },
     ],
     meetingPoint:
-      "Outside Tower Hill Underground station — look for your guide with a red umbrella.",
+      "Outside Tower Hill Underground station — look for your guide, AK, with a red umbrella.",
     endPoint: "In front of St Paul's Cathedral.",
-    image: images.towerBridge,
+    image: images.cityTowerOfLondon,
     featured: true,
   },
   {
@@ -297,9 +304,9 @@ export const tours: Tour[] = [
       },
     ],
     meetingPoint:
-      "In front of the KFH estate agents outside Exit 4 of Notting Hill Gate Underground station — look for your guide with a red umbrella.",
+      "In front of the KFH estate agents outside Exit 4 of Notting Hill Gate Underground station — look for your guide, AK, with a red umbrella.",
     endPoint: "The Blue Door and the bookshops.",
-    image: images.nottingHill,
+    image: images.nottingHillBookshop,
     featured: true,
   },
   {
@@ -346,7 +353,7 @@ export const tours: Tour[] = [
       },
     ],
     meetingPoint:
-      "Outside the Palace Theatre, London W1D — just around the corner from Leicester Square Underground station. Look for your guide with a red umbrella.",
+      "Outside the Palace Theatre, London W1D — just around the corner from Leicester Square Underground station. Look for your guide, AK, with a red umbrella.",
     endPoint: "Great Scotland Yard.",
     image: images.palaceTheatre,
   },
@@ -402,12 +409,12 @@ export const tours: Tour[] = [
       },
     ],
     meetingPoint:
-      "Outside Cutty Sark DLR station, in front of McDonald's. Your guide, AK, will be waiting with a red umbrella.",
+      "Outside Cutty Sark DLR station, in front of McDonald's. Look for your guide, AK, with a red umbrella.",
     endPoint: "Greenwich Market.",
     walking: "About 1.5 miles",
     whoFor:
       "Visitors who want to experience the highlights of Greenwich on foot with a knowledgeable local guide.",
-    image: images.greenwich,
+    image: images.greenwichCuttySark,
   },
 
   /* ------------------------------------------------------------------
@@ -498,7 +505,7 @@ export const tours: Tour[] = [
       },
     ],
     meetingPoint:
-      "At your hotel at 07:30. We collect you from your hotel and drop you back there at the end of the day.",
+      "At your hotel at 07:30 — look for your guide, AK, with a red umbrella. We collect you from your hotel and drop you back there at the end of the day.",
     endPoint: "Back at your hotel.",
     walking: "Moderate walking",
     included: [
@@ -516,6 +523,8 @@ export const tours: Tour[] = [
     title: "England's Academic Heritage",
     subtitle: "Oxford & Cambridge",
     location: "Oxford & Cambridge · from London",
+    duration: "About 10 hours",
+    groupType: "Small group · private tours on request",
     ...dayTripPricing,
     summary:
       "Christ Church College in Oxford, King's College and the Corpus Clock in Cambridge — both of England's ancient university cities in a single day, door to door from your hotel.",
@@ -590,7 +599,7 @@ export const tours: Tour[] = [
       },
     ],
     meetingPoint:
-      "At your hotel at 08:00. We collect you from your hotel and drop you back there at the end of the day.",
+      "At your hotel at 08:00 — look for your guide, AK, with a red umbrella. We collect you from your hotel and drop you back there at the end of the day.",
     endPoint: "Back at your hotel.",
     walking: "Moderate walking",
     included: [
