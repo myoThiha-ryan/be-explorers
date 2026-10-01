@@ -12,7 +12,10 @@ import { site } from "@/content/site";
  *   • Set ENQUIRY_WEBHOOK_URL to POST the payload anywhere (Zapier, Make, Slack).
  *
  * With neither set, enquiries are logged to the server console and the visitor
- * still gets a confirmation — wire one up before launch.
+ * still gets a confirmation. That is a development convenience only: in
+ * production an unconfigured endpoint is treated as a misconfiguration and
+ * fails loudly, because the alternative is telling visitors their enquiry is on
+ * its way while it goes nowhere.
  */
 
 type Payload = {
@@ -67,11 +70,12 @@ export async function POST(request: Request) {
 
   try {
     if (process.env.ENQUIRY_WEBHOOK_URL) {
-      await fetch(process.env.ENQUIRY_WEBHOOK_URL, {
+      const response = await fetch(process.env.ENQUIRY_WEBHOOK_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ subject, ...payload }),
       });
+      if (!response.ok) throw new Error(await response.text());
     } else if (process.env.RESEND_API_KEY) {
       const response = await fetch("https://api.resend.com/emails", {
         method: "POST",
@@ -88,6 +92,10 @@ export async function POST(request: Request) {
         }),
       });
       if (!response.ok) throw new Error(await response.text());
+    } else if (process.env.NODE_ENV === "production") {
+      throw new Error(
+        "No enquiry delivery configured. Set ENQUIRY_WEBHOOK_URL or RESEND_API_KEY.",
+      );
     } else {
       console.info(`[enquiry] no delivery configured\n${subject}\n${lines}`);
     }

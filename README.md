@@ -93,6 +93,11 @@ delivers it based on environment variables — see `.env.example`. With none set
 it logs to the server console and still confirms to the visitor, so the site
 can be deployed before an email provider is chosen.
 
+That fallback is development-only. A production build with no delivery
+configured returns 502 instead, and the form shows its error state with a
+`mailto:` fallback — a mistyped variable should be obvious, not look like
+success while enquiries vanish.
+
 There is no database and no payment integration, deliberately.
 
 ## Languages
@@ -178,9 +183,10 @@ password protection is a paid feature.
 - [ ] Set `SITE_INDEXABLE=true` on the production environment and redeploy, so
       the site can be indexed (it is deliberately noindex until then)
 - [ ] Serve the site from one canonical host. `site.url` is
-      `https://beexplorerstravelandtours.com` (no `www`), and it drives the
-      canonical link, Open Graph URLs and `robots.txt` — so configure the host
-      to redirect `www` to the bare domain rather than serving both
+      `https://www.beexplorerstravel.com`, and it drives the canonical link,
+      Open Graph URLs and `robots.txt`. Vercel serves `www` and 308-redirects
+      the apex to it, which also matches the domain the client's privacy policy
+      names — keep the three in step if the primary domain ever changes
 
 ## Not built yet
 

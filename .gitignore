@@ -32,6 +32,9 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+# ...except the template, which holds no secrets and is what the README sends
+# people to when they set up enquiry delivery.
+!.env.example
 
 # vercel
 .vercel

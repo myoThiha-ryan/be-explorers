@@ -10,7 +10,8 @@ export const site = {
   tagline: "Walking tours and day trips across London and beyond.",
   description:
     "Shared and private walking tours of London — Westminster, the City, Notting Hill, Harry Potter, Canary Wharf & Greenwich — plus full-day trips to Windsor, Stonehenge and Bath, or Oxford and Cambridge. Guided in English, Myanmar and German.",
-  url: "https://beexplorerstravelandtours.com",
+  /** The canonical host: the apex 308-redirects to `www` at the CDN. */
+  url: "https://www.beexplorerstravel.com",
   city: "London, United Kingdom",
   email: "info@beexplorerstravel.com",
   phone: "+44 7852 583872",

@@ -6,10 +6,10 @@ import { site } from "@/content/site";
  * Reproduced as written — this is a legal document, so the wording is the
  * client's and has not been edited for style. The only substitutions are the
  * contact details, which come from `site.ts` so the policy cannot drift out of
- * step with the rest of the site. Note that the source document names
- * `www.beexplorerstravel.com` as the website; the live domain is
- * `beexplorerstravelandtours.com`, which is what `site.url` holds and what the
- * page renders. The email stays on the `beexplorerstravel.com` domain.
+ * step with the rest of the site. The source document names
+ * `www.beexplorerstravel.com` as the website; the live site is served from the
+ * bare `beexplorerstravel.com`, which is what `site.url` holds and what the
+ * page renders.
  */
 
 export type PolicyBlock = {
