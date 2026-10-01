@@ -9,7 +9,7 @@ export function HowItWorks() {
         <SectionHeading
           eyebrow="How it works"
           tone="warm"
-          title="Three steps, no booking system"
+          title="Three simple steps, no booking system"
           intro="Every tour is arranged personally, so the first move is simply telling us what you have in mind."
         />
 

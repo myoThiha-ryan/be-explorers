@@ -16,12 +16,12 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
             <Logo />
-            <p className="mt-5 max-w-xs leading-relaxed text-ink-muted">
+            <p className="mt-5 max-w-xs text-lg leading-relaxed text-black sm:text-base">
               {site.tagline}
             </p>
             {/* One stacked block rather than three separate `mt-5` anchors, so
                 the rows sit on an even rhythm however long each label is. */}
-            <ul className="mt-5 space-y-3 text-[0.9375rem]">
+            <ul className="mt-5 space-y-3 text-[1.0625rem] sm:text-[0.9375rem]">
               <li>
                 <ContactLink href={`mailto:${site.email}`} icon="mail">
                   {site.email}
@@ -56,8 +56,8 @@ export function Footer() {
                     // Myanmar glyphs are tall; give the line room so they don't
                     // collide with neighbouring rows.
                     language.script === "myanmar"
-                      ? "font-my block leading-8 text-ink-muted"
-                      : "text-ink-muted"
+                      ? "font-my block leading-8 text-black"
+                      : "text-black"
                   }
                 >
                   {language.native}
@@ -73,7 +73,7 @@ export function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-ink-muted transition-colors hover:text-navy-800"
+                  className="inline-flex items-center gap-2 text-black transition-colors hover:text-navy-800"
                 >
                   <Icon
                     name={social.label.toLowerCase() as IconName}
@@ -86,8 +86,10 @@ export function Footer() {
           </FooterColumn>
         </div>
 
-        <div className="mt-16 flex flex-col gap-4 border-t border-line pt-8 text-sm text-ink-muted sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} BeExplorers · {site.city}</p>
+        <div className="mt-16 flex flex-col gap-4 border-t border-line pt-8 text-base text-black sm:flex-row sm:items-center sm:justify-between sm:text-sm">
+          <p>
+            © {new Date().getFullYear()} BeExplorers · {site.city}
+          </p>
           <ul className="flex flex-wrap gap-x-6 gap-y-2">
             {legalNav.map((item) => (
               <li key={item.href}>
@@ -138,10 +140,10 @@ function FooterColumn({
 }) {
   return (
     <div>
-      <h2 className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-navy-800">
+      <h2 className="font-sans text-sm font-semibold uppercase tracking-[0.18em] text-navy-800 sm:text-xs">
         {title}
       </h2>
-      <ul className="mt-5 space-y-3 text-[0.9375rem]">{children}</ul>
+      <ul className="mt-5 space-y-3 text-[1.0625rem] sm:text-[0.9375rem]">{children}</ul>
     </div>
   );
 }
@@ -157,7 +159,7 @@ function FooterLink({
     <li>
       <Link
         href={href}
-        className="text-ink-muted transition-colors hover:text-navy-800"
+        className="text-black transition-colors hover:text-navy-800"
       >
         {children}
       </Link>
