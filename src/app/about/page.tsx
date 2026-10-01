@@ -12,6 +12,7 @@ import { site } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "About Us",
+  alternates: { canonical: "/about" },
   description: `${site.name} is ${site.guide} — a London guide with over a decade in the travel industry, leading walking tours and day trips in English, Burmese and German.`,
 };
 

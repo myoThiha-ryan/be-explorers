@@ -4,6 +4,7 @@ import { PageHero } from "@/components/ui/PageHero";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions",
+  alternates: { canonical: "/terms" },
   description: "The terms that apply to BeExplorers tours.",
 };
 

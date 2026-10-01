@@ -12,6 +12,7 @@ import { site } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
+  alternates: { canonical: "/privacy" },
   description: `How ${legalName} collects, uses and protects your personal information under UK GDPR.`,
 };
 

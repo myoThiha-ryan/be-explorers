@@ -47,6 +47,9 @@ export const metadata: Metadata = {
     title: `${site.name} — London Walking Tours & Day Trips`,
     description: site.description,
   },
+  // Only the home page inherits this. Every other page declares its own,
+  // because a canonical inherited from here would point each of them at the
+  // home page and Google would drop them as duplicates.
   alternates: { canonical: "/" },
   // robots.txt alone will not stop a page someone has linked to being indexed;
   // the meta tag will. Both are driven by SITE_INDEXABLE.

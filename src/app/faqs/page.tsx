@@ -7,6 +7,7 @@ import { faqGroups } from "@/content/faqs";
 
 export const metadata: Metadata = {
   title: "FAQs",
+  alternates: { canonical: "/faqs" },
   description:
     "Answers on enquiries, private tours, languages, pricing, changes and accessibility.",
 };

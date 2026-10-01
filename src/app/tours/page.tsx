@@ -8,6 +8,7 @@ import { tours } from "@/content/tours";
 
 export const metadata: Metadata = {
   title: "Tours",
+  alternates: { canonical: "/tours" },
   description:
     "London walking tours and full-day trips to Windsor, Stonehenge and Bath, or Oxford and Cambridge — guided in English, Myanmar and German.",
 };

@@ -165,28 +165,46 @@ password protection is a paid feature.
 
 ## Before launch
 
-- [ ] Replace the placeholder photography (see `public/images/ATTRIBUTION.md`)
-- [ ] Confirm the guide photo. `public/images/guide-portrait.jpg` was supplied
-      by the client and renders in `GuidePortrait` on the homepage and About
-      page. Its alt text does not name anyone — if the person in it is A Kay
-      Mon, name her in `images.guidePortrait.alt` for accessibility and search
+Done, and verified against production on 2 October 2026: the site serves from
+`https://www.beexplorerstravel.com` with the apex redirecting to it,
+`SITE_INDEXABLE=true` is set, `robots.txt` allows crawling and points at
+`/sitemap.xml`, the sitemap lists all 19 pages, Google Search Console is
+verified as a Domain property with the sitemap accepted, and Resend is verified
+on the domain with DKIM, SPF and DMARC resolving.
+
+Still outstanding:
+
+- [ ] **Send one real enquiry through the live form.** Every other link in the
+      chain is verified; this is the only one that cannot be tested without
+      delivering mail. Confirm it reaches `info@beexplorerstravel.com`, appears
+      in Resend → Logs, and that hitting Reply addresses the enquirer
+- [ ] The social **handles do not match the accounts they link to** — Instagram
+      links to `/beexplorerstravelandtours` but displays `@beexplorers`, and
+      TikTok links to `@lwinmarakaymon` but displays `@beexplorers`. The URLs
+      look genuine (they carry share tokens from the apps); it is the displayed
+      handles that are wrong (`src/content/site.ts`)
 - [ ] Confirm `+44 7852 583872` is reachable on WhatsApp — the contact page and
       form confirmation both offer it as a WhatsApp number
-- [ ] Replace the placeholder social URLs in `src/content/site.ts`
+- [ ] Confirm the guide photo. `public/images/guide-portrait.jpg` renders in
+      `GuidePortrait` on the homepage and About page. Its alt text does not name
+      anyone — if the person in it is A Kay Mon, name her in
+      `images.guidePortrait.alt` for accessibility and search
+- [ ] Confirm the client has permission to publish the guest photographs. The
+      `ak-*.jpg` files show identifiable people, including children
 - [ ] Two blog articles promise ten items and list nine — "Here are 10 things
       worth knowing" in `first-time-visitor-guide`, and the title and intro of
       `hidden-london-stories`. Ask the client for the missing item in each, or
       change the number (`src/content/blog.ts`)
-- [ ] Wire up enquiry delivery (`.env.example`)
-- [ ] Replace the Terms & Conditions — still placeholder wording. (The Privacy
-      Policy is the client's own UK GDPR text, in `src/content/privacy.ts`.)
-- [ ] Set `SITE_INDEXABLE=true` on the production environment and redeploy, so
-      the site can be indexed (it is deliberately noindex until then)
-- [ ] Serve the site from one canonical host. `site.url` is
-      `https://www.beexplorerstravel.com`, and it drives the canonical link,
-      Open Graph URLs and `robots.txt`. Vercel serves `www` and 308-redirects
-      the apex to it, which also matches the domain the client's privacy policy
-      names — keep the three in step if the primary domain ever changes
+- [ ] Have the client confirm the Terms & Conditions match how they actually
+      operate, in particular the 7-day cancellation window
+      (`src/app/terms/page.tsx`). The wording is specific to this business, not
+      placeholder, but it has had no legal review
+- [ ] Seven day-trip destination photographs are still CC-licensed placeholders
+      requiring credit — see `public/images/ATTRIBUTION.md`. Replace them with
+      AK's own and delete that file
+- [ ] The enquiry endpoint has no rate limiting, only a honeypot. Fine until the
+      site is indexed and starts attracting bots; Cloudflare Turnstile is the
+      lightest fix
 
 ## Not built yet
 

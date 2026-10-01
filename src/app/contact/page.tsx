@@ -8,6 +8,7 @@ import { site, socials } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Contact",
+  alternates: { canonical: "/contact" },
   description:
     "Send an enquiry about a London walking tour or a full-day trip to Windsor, Stonehenge and Bath, or Oxford and Cambridge, guided in English, Myanmar or German.",
 };
