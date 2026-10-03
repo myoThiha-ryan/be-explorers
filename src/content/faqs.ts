@@ -133,14 +133,29 @@ export const faqGroups: FaqGroup[] = [
     title: "Pricing & Payment",
     items: [
       {
-        question: "Is the price per person or per group?",
+        question: "What is a tip-based tour?",
         answer:
-          "The London walking tours are £20 per person. Children under 18 go free, and special rates are available for families, private groups and corporate bookings — just ask when you enquire. Day trips are quoted individually.",
+          "Our tip-based tours have no fixed tour price. You simply join the tour, enjoy the experience with your local guide, and leave a tip at the end based on how much you enjoyed it and the value you received.",
+        details: [
+          {
+            text: "Many guests typically choose to tip around £20–£50 per person, but there is no fixed or required amount — the choice is yours.",
+          },
+        ],
       },
       {
-        question: "What is included in the price?",
+        question: "Which tours are tip-based?",
         answer:
-          "Your guide for the whole tour, a bottle of water and a small souvenir. Transport, entrance tickets, hotel pick-up and tips are not included.",
+          "All of the London walking tours. The full-day trips outside London — Windsor, Stonehenge and Bath, and Oxford and Cambridge — have a set price per person, because they include transport and entrance fees that have to be paid for in advance.",
+      },
+      {
+        question: "Is the price per person or per group?",
+        answer:
+          "For the day trips outside London, the price shown is per person. Special rates are available for families, private groups and corporate bookings — just ask when you enquire.",
+      },
+      {
+        question: "What is included?",
+        answer:
+          "Your guide for the whole tour, a bottle of water and a small souvenir. Transport, entrance tickets and hotel pick-up are not included on the London walking tours.",
       },
       {
         question: "Are attraction tickets included?",

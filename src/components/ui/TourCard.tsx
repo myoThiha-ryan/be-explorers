@@ -88,7 +88,9 @@ export function TourCard({
             // The price is the part that gives when the column is narrow, so it
             // is the part allowed to wrap — right-aligned so it stays a block.
             <p className="text-right text-sm text-ink-muted">
-              {tour.priceFrom ? (
+              {tour.priceLabel ? (
+                <span className="font-medium text-ink">{tour.priceLabel}</span>
+              ) : tour.priceFrom ? (
                 <>
                   {tour.pricePrefix ? `${tour.pricePrefix} ` : ""}
                   <span className="font-medium text-ink">

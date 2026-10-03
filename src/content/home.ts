@@ -161,8 +161,9 @@ export const howItWorks = [
  * Real guest reviews, supplied by the client (Reviews.pdf) — every review in
  * that document except three: two that praise "Lwin" (the same guide under a
  * different name, which a visitor would read as somebody else) and one that
- * describes a "Free Walking Tour", which contradicts the £20 price on every
- * tour page.
+ * describes a "Free Walking Tour". That third exclusion was made when the
+ * London walks carried a £20 price; now that they are tip-based it no longer
+ * contradicts anything, so it could be restored if the client wants it.
  *
  * Verbatim apart from the guide's name, normalised to "A Kay" (the source
  * spells it "Akay" in the earlier reviews), and a handful of stray double
@@ -434,6 +435,7 @@ export const aboutGuide = {
   heading: "Meet AK your Local Guide",
   body: [
     "Our itineraries are thoughtfully planned to make the most of your time, combining history, culture, famous landmarks and fascinating stories with a friendly and personal guiding experience.",
+    "Our tours are tip-based, giving you the freedom to decide what the experience is worth to you. There is no fixed tour price. Simply join us, enjoy the stories, sights and experience, and leave a tip for your guide at the end. For guidance, many guests typically choose to tip between £20 and £50 per person, depending on how much they enjoyed the tour and the value they felt they received.",
     `All our tours are guided by ${site.guide}, an experienced travel professional who has worked in the tourism industry since 2012 with internationally recognised travel companies.`,
   ],
   cta: { label: "Meet Your Guide", href: "/about" },

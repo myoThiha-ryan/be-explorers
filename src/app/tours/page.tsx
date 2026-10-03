@@ -19,7 +19,7 @@ export default function ToursPage() {
       <PageHero
         eyebrow="Tours"
         title="Explore Our Tours"
-        intro="Small-group walking tours of London from £20 per person, and full-day trips further afield. Every tour can also be booked privately for families, friends or companies. If you don't see what you're after, it can almost certainly be arranged."
+        intro="Small-group, tip-based walking tours of London, and full-day trips further afield. Every tour can also be booked privately for families, friends or companies. If you don't see what you're after, it can almost certainly be arranged."
         image={images.thamesWestminster}
       />
 

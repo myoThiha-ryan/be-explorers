@@ -8,6 +8,7 @@ import { FaqAccordion } from "@/components/ui/FaqAccordion";
 import { Icon, type IconName } from "@/components/ui/Icon";
 import { LanguageTags } from "@/components/ui/LanguageTags";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { cn } from "@/lib/cn";
 import { StickyEnquireBar } from "@/components/ui/StickyEnquireBar";
 import { TourCard } from "@/components/ui/TourCard";
 import { faqTeaser } from "@/content/faqs";
@@ -54,11 +55,13 @@ export default async function TourDetailPage({
     {
       icon: "globe" as const,
       label: "Price",
-      value: tour.priceFrom
-        ? [tour.pricePrefix, `£${tour.priceFrom}`, tour.priceUnit]
-            .filter(Boolean)
-            .join(" ")
-        : "On enquiry",
+      value:
+        tour.priceLabel ??
+        (tour.priceFrom
+          ? [tour.pricePrefix, `£${tour.priceFrom}`, tour.priceUnit]
+              .filter(Boolean)
+              .join(" ")
+          : "On enquiry"),
     },
   ];
 
@@ -190,7 +193,7 @@ export default async function TourDetailPage({
               {tour.detailsPending ? (
                 <div className="mt-14 rounded-2xl border border-line bg-mist p-6 leading-relaxed text-ink-muted">
                   Full details for this tour — the itinerary, meeting point
-                  {tour.priceFrom
+                  {tour.priceLabel || tour.priceFrom
                     ? " and what is included"
                     : ", what is included and the price"}{" "}
                   — are being finalised. Send an enquiry with your dates and we
@@ -276,8 +279,17 @@ export default async function TourDetailPage({
                 <p className="text-sm uppercase tracking-[0.14em] text-ink-muted">
                   Price
                 </p>
-                <p className="mt-2 font-display text-4xl text-navy-800">
-                  {tour.priceFrom ? (
+                {/* A worded price needs less room than a figure: at 4xl
+                    "Tip-based tour" would wrap awkwardly in the rail. */}
+                <p
+                  className={cn(
+                    "mt-2 font-display text-navy-800",
+                    tour.priceLabel ? "text-3xl" : "text-4xl",
+                  )}
+                >
+                  {tour.priceLabel ? (
+                    tour.priceLabel
+                  ) : tour.priceFrom ? (
                     <>
                       {/* Set above the amount rather than inline: at 4xl the
                           qualifier would dwarf the number it qualifies. */}
@@ -292,11 +304,13 @@ export default async function TourDetailPage({
                     "On enquiry"
                   )}
                 </p>
-                {tour.priceFrom ? (
+                {tour.priceLabel || tour.priceFrom ? (
                   <>
-                    <p className="mt-1 text-sm text-ink-muted">
-                      {tour.priceUnit}
-                    </p>
+                    {tour.priceUnit && (
+                      <p className="mt-1 text-sm text-ink-muted">
+                        {tour.priceUnit}
+                      </p>
+                    )}
                     {tour.priceNote && (
                       <p className="mt-4 text-sm leading-relaxed text-ink-muted">
                         {tour.priceNote}

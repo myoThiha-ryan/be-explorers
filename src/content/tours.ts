@@ -32,6 +32,12 @@ export type Tour = {
    * while the note qualifies who pays it.
    */
   pricePrefix?: string;
+  /**
+   * Replaces the whole numeric treatment, e.g. "Tip-based tour". Takes
+   * precedence over `priceFrom`, so a tour with no set price still reads as a
+   * deliberate pricing model rather than falling through to "Price on enquiry".
+   */
+  priceLabel?: string;
   /** Qualifies the headline price: concessions and private rates */
   priceNote?: string;
   summary: string;
@@ -80,16 +86,14 @@ export const tourIncludes = {
 };
 
 /**
- * The standard London tour price. Per the client's FAQ: "The London walking
- * tours are £20 per person. Children under 18 go free, and special rates are
- * available for families, private groups and corporate bookings."
+ * The London walks are tip-based: no fixed price, the guest decides at the end.
+ * Wording follows the client's own: "Many guests typically choose to tip around
+ * £20–£50 per person, but there is no fixed or required amount."
  */
 const londonPricing = {
-  priceFrom: 20,
-  priceUnit: "per person" as const,
-  pricePrefix: "Starting from",
+  priceLabel: "Tip-based tour",
   priceNote:
-    "Free for under-18s · special rates for families and companies booking privately",
+    "No fixed price. Many guests choose to tip around £20–£50 per person, but the amount is entirely yours to decide.",
 };
 
 /** Tours outside London, per the client's September note. */
@@ -100,7 +104,7 @@ const dayTripPricing = {
   priceNote: "Private and group tours available — contact us for more details",
 };
 
-/** Shared by every £20-per-person walking tour. */
+/** Shared by every tip-based London walking tour. */
 const walkingTour = {
   duration: "2 hours",
   ...londonPricing,

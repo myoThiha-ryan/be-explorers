@@ -51,9 +51,9 @@ Adding a tour to `tours.ts` gives you a card on `/tours`, a detail page at
 Set `featured: true` to put it on the homepage.
 
 **Pricing model.** The four fully-specified London walking tours share a
-`walkingTour` object at the top of `tours.ts`: 2 hours, £20 per person,
-under-18s free, special rates for families and companies booking privately.
-Change it in one place and all four update. The remaining tours carry no
+`walkingTour` object at the top of `tours.ts`: 2 hours, tip-based (no fixed
+price; guests typically tip £20–£50 per person). Change it in one place and all
+of them update. The remaining tours carry no
 published price, so they show "Price on enquiry" — they are marked
 `detailsPending: true` because their itinerary, meeting point and price have not
 been supplied yet.
